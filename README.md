@@ -20,7 +20,7 @@ KULLM(구름) 고려대학교 NLP & AI 연구실에서 개발한, 한국어에 �
 
 ## Example
 
-<img scr="assets/example.png" width="65%" >
+<img src="assets/example.png" width="65%" >
 
 <br/>
 
