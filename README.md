@@ -1,5 +1,5 @@
 <p align="center" width="100%">
-<img src="assets/logo.png" alt="NLP & AI Logo" style="width: 80%;">
+<img src="assets/logo.png" alt="NLP & AI Logo" style="width: 60%;">
 </p>
 
 
