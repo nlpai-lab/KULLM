@@ -112,7 +112,7 @@ GPT4ALL 데이터셋은 다음과 같이 Instruct 부분과 Input, 그리고 Out
 
 한국어로 생성이 완료된 데이터셋은 `kullm_train_data.jsonl`에 저장되어 있습니다.
 
-또한, 
+
 
 <br>
 
