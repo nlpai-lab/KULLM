@@ -88,7 +88,7 @@ ask("딥러닝이 뭐야?")
 
 ## Dataset
 
-데이터셋은 기본적으로 [GPT4ALL](https://github.com/nomic-ai/gpt4all)을 기반으로 합니다. GPT4ALL은 가장 뛰어난 instruction tuned assistant-style language model로, 누구나 자유롭게 사용, 배포, 확장할 수 있도록 설계되었습니다. GPT4ALL 데이터셋은 DEEPL을 사용하여 한국어로 번역하였습니다. 번역된 데이터셋은 `kullm_train_data.jsonl`에 저장되어 있습니다.
+데이터셋은 기본적으로 [GPT4ALL](https://github.com/nomic-ai/gpt4all)을 기반으로 합니다. GPT4ALL은 뛰어난 instruction tuned assistant-style language model로, 누구나 자유롭게 사용, 배포, 확장할 수 있도록 설계되었습니다. GPT4ALL 데이터셋은 DEEPL을 사용하여 한국어로 번역하였습니다. 번역된 데이터셋은 `kullm_train_data.jsonl`에 저장되어 있습니다.
 
 #### 데이터셋 예시
 
