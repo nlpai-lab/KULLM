@@ -12,7 +12,7 @@
 
 <br>
 
-# ☁️ KULMM (구름): Korea University Large Langaug Project (feat. LLAMA and Polyglot-ko)
+# 🌩 KULMM (구름): Korea University Large Langaug Project (feat. LLAMA and Polyglot-ko)
 
 KULLM(구름)은 고려대학교 [NLP & AI 연구실](http://blp.korea.ac.kr/)에서 개발한, 한국어에 특화된 LLM (Large Language Model) 프로젝트입니다. 
 
