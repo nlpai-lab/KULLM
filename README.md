@@ -2,11 +2,9 @@
 <img src="assets/logo.png" alt="NLP & AI Logo" style="width: 60%;">
 </p>
 
-
 ## Update Logs
 
-- 2023.05.30: [🤗Polyglot-ko 12.8B 기반 KULLM-Polyglot-12.8B fp16 모델](https://huggingface.co/metterian/kullm-polyglot-12.8b) 공개 
-
+- 2023.05.30: [🤗Polyglot-ko 12.8B 기반 KULLM-Polyglot-12.8B fp16 모델](https://huggingface.co/metterian/kullm-polyglot-12.8b) 공개
 
 ---
 
@@ -14,7 +12,7 @@
 
 # ☁️ KULLM (구름): Korea University Large Langauge Model Project (feat. Polyglot-ko)
 
-KULLM(구름)은 고려대학교 [NLP & AI 연구실](http://blp.korea.ac.kr/)에서 개발한, 한국어에 특화된 LLM (Large Language Model) 프로젝트입니다. 
+KULLM(구름)은 고려대학교 [NLP & AI 연구실](http://blp.korea.ac.kr/)에서 개발한, 한국어에 특화된 LLM (Large Language Model) 프로젝트입니다.
 
 <br/>
 
@@ -24,15 +22,15 @@ KULLM(구름)은 고려대학교 [NLP & AI 연구실](http://blp.korea.ac.kr/)�
 
 <br/>
 
-## 한국어 기반 모델(Polyglot-ko) 
+## 한국어 기반 모델(Polyglot-ko)
 
-KULLM(구름)은 백본 모델로 한국어 모델은 Polyglot-ko(12.8B)모델을 사용하여 학습을 진행했습니다. 
+KULLM(구름)은 백본 모델로 한국어 모델은 Polyglot-ko(12.8B)모델을 사용하여 학습을 진행했습니다.
 
 1. **Polyglot-ko 12.8B 기반 [LoRA]** -> [🤗 metterian/kullm-polyglot-12.8b](https://huggingface.co/metterian/kullm-polyglot-12.8b)
 
 2. 다른 모델 추후 공개
 
-Meta의 LLAMA 모델과 Polyglot의 12.8B 이하의 모델은 테스트 결과 한국어 성능이 좋지 못하여 공개하지 않기로 했습니다. 추후 여러 좋은 한국어 성능을 보여주는 LLM 모델을 학습하여 공개하고자 합니다. 
+Meta의 LLAMA 모델과 Polyglot의 12.8B 이하의 모델은 테스트 결과 한국어 성능이 좋지 못하여 공개하지 않기로 했습니다. 추후 여러 좋은 한국어 성능을 보여주는 LLM 모델을 학습하여 공개하고자 합니다.
 
 <br/>
 
@@ -62,7 +60,7 @@ model = AutoModelForCausalLM.from_pretrained(
 model.eval()
 
 pipe = pipeline(
-    'text-generation', 
+    'text-generation',
     model=model,
     tokenizer=MODEL,
     device=0
@@ -70,8 +68,8 @@ pipe = pipeline(
 
 def ask(x, context='', is_input_full=False):
     ans = pipe(
-        f"### 질문: {x}\n\n### 맥락: {context}\n\n### 답변:" if context else f"### 질문: {x}\n\n### 답변:", 
-        do_sample=True, 
+        f"### 질문: {x}\n\n### 맥락: {context}\n\n### 답변:" if context else f"### 질문: {x}\n\n### 답변:",
+        do_sample=True,
         max_new_tokens=512,
         temperature=0.7,
         top_p=0.9,
@@ -81,7 +79,7 @@ def ask(x, context='', is_input_full=False):
     print(ans[0]['generated_text'])
 
 ask("딥러닝이 뭐야?")
-# 딥러닝은 인공신경망을 통해 입력과 출력 사이의 복잡한 관계를 학습하는 머신러닝의 한 분야입니다. 이 기술은 컴퓨터가 인간의 학습 능력과 유사한 방식으로 패턴을 학습하도록 하며, 인간의 개입 없이도 데이터를 처리할 수 있는 기술입니다. 최근에는 딥러닝을 활용한 인공지능 애플리케이션이 많이 개발되고 있습니다. 예를 들어, 의료 진단 애플리케이션에서는 딥러닝 기술을 활용하여 환자의 특징을 파악하고, 이를 통해 빠르고 정확한 진단을 내리는 데 사용됩니다. 또한, 금융 분야에서는 딥러닝 기술을 활용하여 주가 예측 모형을 학습하는 데 사용되기도 합니다. 
+# 딥러닝은 인공신경망을 통해 입력과 출력 사이의 복잡한 관계를 학습하는 머신러닝의 한 분야입니다. 이 기술은 컴퓨터가 인간의 학습 능력과 유사한 방식으로 패턴을 학습하도록 하며, 인간의 개입 없이도 데이터를 처리할 수 있는 기술입니다. 최근에는 딥러닝을 활용한 인공지능 애플리케이션이 많이 개발되고 있습니다. 예를 들어, 의료 진단 애플리케이션에서는 딥러닝 기술을 활용하여 환자의 특징을 파악하고, 이를 통해 빠르고 정확한 진단을 내리는 데 사용됩니다. 또한, 금융 분야에서는 딥러닝 기술을 활용하여 주가 예측 모형을 학습하는 데 사용되기도 합니다.
 ```
 
 <br/>
@@ -112,17 +110,64 @@ GPT4ALL 데이터셋은 다음과 같이 Instruct 부분과 Input, 그리고 Out
 
 한국어로 생성이 완료된 데이터셋은 `kullm_train_data.jsonl`에 저장되어 있습니다.
 
-
-
 <br>
 
-## Training (LoRA)
+## Training with LoRA
 
-### LLAMA 13B 모델 학습
+### Polyglot 13B 모델 학습
 
 🤗 Huggingface Repo: [metterian/kullm-polyglot-12.8b](https://huggingface.co/metterian/kullm-polyglot-12.8b)
 
 모델 학습은 A100 80GB 4대로 진행했습니다. 학습에 사용한 코드는 [tloen/alpaca-lora](https://github.com/tloen/alpaca-lora)을 기반으로 사용하였습니다.
+
+### Dependency
+
+1. 다음 명령어를 통해 필요한 패키지를 설치:
+
+```bash
+pip install -r requirements.txt
+```
+
+2. 만약 bitsandbytes가 작동하지 않는다면, [소스에서 직접 설치하세요](https://github.com/TimDettmers/bitsandbytes/blob/main/compile_from_source.md). 윈도우 사용자는 [다음의 설명서](https://github.com/tloen/alpaca-lora/issues/17)를 참조하세요.
+
+### Traning (`finetune_polyglot.py`)
+
+이 코드는 Polyglot 모델에 PEFT를 직접적으로 적용하고, 프롬프트 구성 및 토크나이징에 관련된 코드가 들어있는 파일입니다.
+사용 예시:
+
+```
+finetune-polyglot-alpaca.py \
+--base_model='EleutherAI/polyglot-ko-12.8b' \
+--data_path='/data/persuade/01_KuAlpaca/alpaca_data_gpt4_deepl+gpt4_ko.jsonl'
+```
+
+다음과 같이 하이퍼파라미터를 조정할 수도 있습니다:
+
+```bash
+python -m torch.distributed.launch  --master_port=34322  --nproc_per_node 4 finetune_args.py \
+    --fp16 \
+    --base_model 'EleutherAI/polyglot-ko-12.8b' \
+    --data_path data/user_oriented_instructions_train.jsonl \
+    --output_dir ckpt/$SAVE_DIR \
+    --batch_size 128 \
+    --micro_batch_size 4 \
+    --num_epochs $EPOCH \
+    --learning_rate $LR \
+    --cutoff_len 512 \
+    --val_set_size 2000 \
+    --lora_r 8 \
+    --lora_alpha 16 \
+    --lora_dropout 0.05 \
+    --lora_target_modules '[q_proj,k_proj,v_proj,o_proj]' \
+    --train_on_inputs \
+    --logging_steps 1 \
+    --eval_steps 40 \
+    --weight_decay 0. \
+    --warmup_steps 0 \
+    --warmup_ratio 0.03 \
+    --lr_scheduler_type "cosine" \
+    --group_by_length
+```
 
 <br/>
 
@@ -144,7 +189,4 @@ GPT4ALL 데이터셋은 다음과 같이 Instruct 부분과 Input, 그리고 Out
 | koVicuna    | 50.2  |
 | KULMM       | 62.3  |
 
-
-
 ---
-
