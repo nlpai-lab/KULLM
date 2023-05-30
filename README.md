@@ -34,6 +34,7 @@ KULLM(구름)은 백본 모델로 한국어 모델은 Polyglot-ko(12.8B)모델�
 
 Meta의 LLAMA 모델과 Polyglot의 12.8B 이하의 모델은 테스트 결과 한국어 성능이 좋지 못하여 공개하지 않기로 했습니다. 추후 여러 좋은 한국어 성능을 보여주는 LLM 모델을 학습하여 공개하고자 합니다. 
 
+<br/>
 
 ## KoAlpaca 모델 실행 예시 코드
 
@@ -113,9 +114,7 @@ GPT4ALL 데이터셋은 다음과 같이 Instruct 부분과 Input, 그리고 Out
 
 또한, 
 
-
-
-
+<br>
 
 ## Training (LoRA)
 
