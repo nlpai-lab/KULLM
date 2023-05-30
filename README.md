@@ -1,5 +1,5 @@
 <p align="center" width="100%">
-<img src="assets/logo.png" alt="NLP & AI Logo">
+<img src="assets/logo.png" alt="NLP & AI Logo" style="width: 200px; height:200px; display: block; margin: auto; border-radius: 50%;">
 </p>
 
 
@@ -10,6 +10,8 @@
 
 ---
 
+<br>
+
 # KULMM (구름): Korea University Large Langaug Project (feat. LLAMA and Polyglot-ko)
 
 KULLM(구름) 고려대학교 NLP & AI 연구실에서 개발한, 한국어에 특화된 LLM (Large Language Model) 프로젝트입니다. 
@@ -18,7 +20,7 @@ KULLM(구름) 고려대학교 NLP & AI 연구실에서 개발한, 한국어에 �
 
 ## Example
 
-![example](assets/example.png)
+<img src="assets/example.png" alt="example" style="zoom:67%;" />
 
 <br/>
 
