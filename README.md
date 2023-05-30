@@ -136,13 +136,13 @@ GPT4ALL 데이터셋은 다음과 같이 Instruct 부분과 Input, 그리고 Out
 
 ### Result of Evalution
 
-| Model        | Score |
-| ------------ | ----- |
-| ChatGPT      | 83.3  |
-| GPT4         | 87.6  |
-| oAlpaca v1.1 | 40.6  |
-| koVicuna     | 50.2  |
-| KULMM        | 62.3  |
+| Model       | Score |
+| ----------- | ----- |
+| ChatGPT     | 83.3  |
+| GPT4        | 87.6  |
+| Alpaca v1.1 | 40.6  |
+| koVicuna    | 50.2  |
+| KULMM       | 62.3  |
 
 
 
