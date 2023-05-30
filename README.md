@@ -133,10 +133,11 @@ pip install -r requirements.txt
 ### Traning (`finetune_polyglot.py`)
 
 이 코드는 Polyglot 모델에 PEFT를 직접적으로 적용하고, 프롬프트 구성 및 토크나이징에 관련된 코드가 들어있는 파일입니다.
+
 사용 예시:
 
 ```
-finetune-polyglot-alpaca.py \
+finetune_polyglot.py \
 --base_model='EleutherAI/polyglot-ko-12.8b' \
 --data_path='/data/persuade/01_KuAlpaca/alpaca_data_gpt4_deepl+gpt4_ko.jsonl'
 ```
@@ -144,7 +145,7 @@ finetune-polyglot-alpaca.py \
 다음과 같이 하이퍼파라미터를 조정할 수도 있습니다:
 
 ```bash
-python -m torch.distributed.launch  --master_port=34322  --nproc_per_node 4 finetune_args.py \
+python -m torch.distributed.launch  --master_port=34322  --nproc_per_node 4 finetune_polyglot.py \
     --fp16 \
     --base_model 'EleutherAI/polyglot-ko-12.8b' \
     --data_path data/user_oriented_instructions_train.jsonl \
