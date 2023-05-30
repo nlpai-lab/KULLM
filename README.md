@@ -176,6 +176,8 @@ python -m torch.distributed.launch  --master_port=34322  --nproc_per_node 4 fine
 
 - 모델 평가는 G-Eval: NLG Evaluation using GPT-4 with Better Human Alignment (Yang Liu. et. al. 2023)의 방법론을 사용하였습니다. 평가 데이터셋은 [yizhongw/self-instruct](https://github.com/yizhongw/self-instruct)의 휴먼 평가 데이터셋인 `user_oriented_instructions.jsonl`을 deepl로 번역한 데이터셋을 사용하였습니다.
 
+- 해당 데이터셋은 [`user_oriented_instructions_test.jsonl`](data/user_oriented_instructions_test.jsonl)에 저장되어 있습니다.
+
 #### Prompt
 
 - TBA.
