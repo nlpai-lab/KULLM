@@ -6,7 +6,7 @@
 
 - 2023.05.31:
   - [🤗Polyglot-ko 12.8B 기반 KULLM-Polyglot-12.8B-v2 fp16 모델](https://huggingface.co/taeminlee/kullm-polyglot-12.8b-v2) 공개
-  - (구름(KULLM) 데이터셋 v2)[http://gofile.me/6VWV1/PBpR0iYpq] 공개
+  - [구름(KULLM) 데이터셋 v2](http://gofile.me/6VWV1/PBpR0iYpq) 공개
 - 2023.05.30: [🤗Polyglot-ko 12.8B 기반 KULLM-Polyglot-12.8B fp16 모델](https://huggingface.co/metterian/kullm-polyglot-12.8b) 공개
 
 ---
