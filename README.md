@@ -218,3 +218,17 @@ python -m torch.distributed.launch  --master_port=34322  --nproc_per_node 4 fine
 | Open   | LLaMA-7b          | [koVicuna](https://huggingface.co/junelee/ko_vicuna_7b)      | 50.2     | 57.3                      |
 
 ---
+
+
+## Citation
+Please cite the repo if you use the data or code in this repo.
+
+```
+@misc{kullm,
+  author = {NLP & AI Lab and HIAI},
+  title = {KULLM: Korea University Large Language Model Project},
+  year = {2023},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/nlpai-lab/kullm}},
+}
