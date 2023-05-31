@@ -91,11 +91,11 @@ infer(input_text="고려대학교에 대해서 알려줘")
 
 ### 구름 데이터셋 v2
 
+[다운로드](http://gofile.me/6VWV1/PBpR0iYpq)
+
 구름 데이터셋 v2는 [GPT4ALL](https://github.com/nomic-ai/gpt4all), [Vicuna](https://github.com/lm-sys/FastChat), 그리고 Databricks의 [Dolly](https://github.com/databrickslabs/dolly) 데이터셋을 병합한 것입니다. 이 모든 데이터셋은 DEEPL을 이용하여 한국어로 번역되었습니다.
 
 GPT4ALL은 instruction tuned assistant-style language model이며, Vicuna와 Dolly 데이터셋은 다양한 자연어 처리 문제를 해결하는 데 활용됩니다. 특히, Dolly는 instruction/response fine tuning records를 훈련 데이터로 사용한 언어 모델입니다.
-
-[링크](http://gofile.me/6VWV1/PBpR0iYpq)
 
 다운로드 후, `data` 폴더로 이동해주세요.
 
