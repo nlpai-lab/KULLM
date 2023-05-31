@@ -55,7 +55,7 @@ pip install -U torch transformers tokenizers accelerate
 import torch
 from transformers import pipeline, AutoModelForCausalLM
 
-MODEL = 'metterian/kullm-polyglot-12.8b'
+MODEL = 'metterian/kullm-polyglot-12.8b-v2'
 
 model = AutoModelForCausalLM.from_pretrained(
     MODEL,
@@ -205,6 +205,6 @@ python -m torch.distributed.launch  --master_port=34322  --nproc_per_node 4 fine
 | Closed     | GPT4          | 87.6      | 100                       |
 | Closed     | ChatGPT       | 83.3      | 95.1                      |
 | Open       | **KULMM v2**  | **62.3**  | **71.1**                  |
-| Open       | Alpaca v1.1   | 40.6      | 46.3                      |
+| Open       | KoAlpaca v1.1 | 40.6      | 46.3                      |
 | Open       | koVicuna      | 50.2      | 57.3                      |
 ---
