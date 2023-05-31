@@ -1,6 +1,5 @@
 <p align="center" width="100%">
-<img src="https://github.com/nlpai-lab/KULLM/raw/master/assets/logo.png" alt="NLP & AI Logo" style="width: 40%;">
-<img src="https://i.imgur.com/NTlTxO3.png" alt="HIAI Logo" style="margin-left:5%; width: 40%;">
+<img src="https://github.com/nlpai-lab/KULLM/raw/master/assets/logo.png" alt="Logo" style="width: 40%;">
 </p>
 
 ## Update Logs
