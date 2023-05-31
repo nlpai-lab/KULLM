@@ -183,7 +183,7 @@ python -m torch.distributed.launch  --master_port=34322  --nproc_per_node 4 fine
     --lora_r 8 \
     --lora_alpha 16 \
     --lora_dropout 0.05 \
-    --lora_target_modules '[q_proj,k_proj,v_proj,o_proj]' \
+    --lora_target_modules ["query_key_value", "xxx"] \
     --train_on_inputs \
     --logging_steps 1 \
     --eval_steps 40 \
