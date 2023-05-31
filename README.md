@@ -56,6 +56,9 @@ pip install -U torch transformers tokenizers accelerate
 import torch
 from transformers import pipeline, AutoModelForCausalLM
 
+from utils.prompter import Prompter
+
+
 MODEL = 'taeminlee/kullm-polyglot-12.8b-v2'
 
 model = AutoModelForCausalLM.from_pretrained(
@@ -72,20 +75,24 @@ pipe = pipeline(
     device=0
 )
 
-def ask(x, context='', is_input_full=False):
-    ans = pipe(
-        f"### 질문: {x}\n\n### 맥락: {context}\n\n### 답변:" if context else f"### 질문: {x}\n\n### 답변:",
+prompter = Prompter("kullm")
+
+def infer(instruction="", input_text='', is_input_full=False):
+    prompt = prompter.generate_prompt(instruction, input_text)
+    output = pipe(
+        prompt,
         do_sample=True,
         max_new_tokens=512,
-        temperature=0.7,
-        top_p=0.9,
+        temperature=0.2,
+        top_p=0.95,
+        num_beams=5,
         return_full_text=False,
         eos_token_id=2,
     )
-    print(ans[0]['generated_text'])
+    s = output.sequences[0]
+    result = tokenizer.decode(s)
 
-ask("딥러닝이 뭐야?")
-# 딥러닝은 인간의 두뇌를 모방한 알고리즘을 사용하여 이미지, 음성, 텍스트 등의 데이터를 학습하는 인공 지능의 한 형태입니다. 머신 러닝이라고도 합니다. 컴퓨터가 데이터를 학습하여 패턴을 인식하고 예측하는 데 사용되며, 자연어 처리 및 이미지 인식과 같은 애플리케이션에 사용됩니다. 머신 러닝은 컴퓨터가 데이터를 통해 학습하고 성능을 향상시킬 수 있도록 하는 알고리즘을 구축하는 데 사용됩니다. 머신 러닝은 인공 지능의 하위 집합으로 간주되며, 인간의 두뇌를 모방하도록 설계되었습니다. 머신 러닝은 데이터를 분석하고 알고리즘을 사용하여 패턴을 인식하고 예측하는 방식으로 작동합니다. 머신 러닝의 목표는 데이터를 학습하여 성능을 향상시키는 것입니다.
+infer(input_text="고려대학교에 대해서 알려줘")
 ```
 
 <br/>
