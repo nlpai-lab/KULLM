@@ -13,11 +13,9 @@
 
 <br>
 
-# ☁️ KULLM (구름): Korea University Large Langauge Model
+# ☁️ KULLM (구름): Korea University Large Langauge Model via Data-Centric Approach
 
-KULLM(구름)은 고려대학교 [NLP & AI 연구실](http://blp.korea.ac.kr/)과 [HIAI 연구소](http://hiai.korea.ac.kr)에서 개발한, 한국어에 특화된 LLM (Large Language Model) 프로젝트입니다.
-
-구름 프로젝트는 한국어에 특화된 데이터셋을 공개하여 다양한 태스크를 아우르는 AI 모델을 제공하고자 합니다.
+KULLM(구름)은 고려대학교 [NLP & AI 연구실](http://blp.korea.ac.kr/)과 [HIAI 연구소](http://hiai.korea.ac.kr)가 개발한 한국어 Large Language Model (LLM) 입니다. Model-Centric하게 접근하기보다, Data-Centric하게 접근하여 LLM의 성능을 극대화 시켰습니다. 모델 뿐만 아니라, 데이터 셋까지 전면 공개하여 한국어 LLM 생태계의 기여하고자 하였습니다.
 
 <br/>
 
@@ -27,9 +25,9 @@ KULLM(구름)은 고려대학교 [NLP & AI 연구실](http://blp.korea.ac.kr/)�
 
 <br/>
 
-## 한국어 기반 모델(Polyglot-ko)
+## Backbone Model?: Polyglot-ko
 
-KULLM(구름)은 백본 모델로 한국어 모델은 Polyglot-ko(12.8B)모델을 사용하여 학습을 진행했습니다.
+KULLM(구름)은 Backbone Model로 Polyglot-ko(12.8B)을 사용하여 학습을 진행하였습니다.
 
 1. Polyglot-ko 12.8B 기반-v2 -> 🤗 [taeminlee/kullm-polyglot-12.8b-v2](https://huggingface.co/taeminlee/kullm-polyglot-12.8b-v2)
     - 데이터셋 v2: [GPT4ALL](https://github.com/nomic-ai/gpt4all), [Dolly](https://github.com/databrickslabs/dolly), [Vicuna](https://github.com/lm-sys/FastChat)
@@ -128,7 +126,7 @@ GPT4ALL 데이터셋은 다음과 같이 Instruct 부분과 Input, 그리고 Out
 
 ## Training with LoRA
 
-KULLM은 한국어 모델로 Polyglot 12.8B 모델을 LoRA (Low Rank Adaptation)를 사용하여 학습하였습니다.
+KULLM은 한국어 모델로 Polyglot 12.8B 모델을 Low Rank Adaptation (LoRA)를 사용하여 학습하였습니다.
 
 모델 학습은 A100 80GB 4대로 진행했습니다. 학습에 사용한 코드는 [tloen/alpaca-lora](https://github.com/tloen/alpaca-lora)을 기반으로 사용하였습니다.
 
@@ -156,7 +154,7 @@ pip install -r requirements.txt
 
 ### Traning (`finetune_polyglot.py`)
 
-이 코드는 Polyglot 모델에 PEFT를 직접적으로 적용하고, 프롬프트 구성 및 토크나이징에 관련된 코드가 들어있는 파일입니다.
+이 코드는 Polyglot 모델에 Parameter-Efficient Fine-Tuning (PEFT)을 적용하고, 프롬프트 구성 및 토크나이징에 관련된 코드가 들어있는 파일입니다.
 
 사용 예시:
 
@@ -166,7 +164,7 @@ python finetune_polyglot.py \
 --data_path='./data/kullm-v2.jsonl'
 ```
 
-다음과 같이 하이퍼파라미터를 조정할 수도 있습니다:
+다음과 같이 하이퍼파라미터를 조정 가능합니다:
 
 ```bash
 python -m torch.distributed.launch  --master_port=34322  --nproc_per_node 4 finetune_polyglot.py \
@@ -203,10 +201,6 @@ python -m torch.distributed.launch  --master_port=34322  --nproc_per_node 4 fine
 
 - 해당 데이터셋은 [`user_oriented_instructions_eval.jsonl`](data/user_oriented_instructions_eval.jsonl)에 저장되어 있습니다.
 
-#### Prompt
-
-- TBA.
-
 ### LLM Inference Results for Korean Evaluation Set
 
 | Type   | Base-model        | Model                                                        | Score    | Releative Score (vs GPT4) |
@@ -218,7 +212,6 @@ python -m torch.distributed.launch  --master_port=34322  --nproc_per_node 4 fine
 | Open   | LLaMA-7b          | [koVicuna](https://huggingface.co/junelee/ko_vicuna_7b)      | 50.2     | 57.3                      |
 
 ---
-
 
 ## Citation
 Please cite the repo if you use the data or code in this repo.
@@ -232,3 +225,4 @@ Please cite the repo if you use the data or code in this repo.
   journal = {GitHub repository},
   howpublished = {\url{https://github.com/nlpai-lab/kullm}},
 }
+```
