@@ -41,7 +41,7 @@ Meta의 LLAMA 모델과 Polyglot의 12.8B 이하의 모델은 테스트 결과 �
 
 <br/>
 
-## KoAlpaca 모델 실행 예시 코드
+## KULLM 모델 실행 예시 코드
 
 ### Huggingface Pipeline으로 실행
 
