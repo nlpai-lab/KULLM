@@ -1,4 +1,4 @@
-python -m torch.distributed.launch  --master_port=34322  --nproc_per_node 4 finetune_args.py \
+python -m torch.distributed.launch  --master_port=34322  --nproc_per_node 4 finetune_polyglot.py \
     --fp16 \
     --base_model 'EleutherAI/polyglot-ko-12.8b' \
     --data_path data/kullm-v2.jsonl \
