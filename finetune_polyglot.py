@@ -28,7 +28,7 @@ from utils.prompter import Prompter
 def train(
     # model/data params
     base_model: str = "EleutherAI/polyglot-ko-12.8b",  # the only required argument
-    data_path: str = "/data/persuade/01_KuAlpaca/alpaca_data_gpt4_deepl+gpt4_ko.jsonl",
+    data_path: str = "/data/kullm-v2",
     output_dir: str = "./lora-alpaca",
     # training hyperparams
     batch_size: int = 128,
