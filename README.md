@@ -5,7 +5,7 @@
 ## Update Logs
 
 - 2023.05.31:
-  - [🤗Polyglot-ko 12.8B 기반 KULLM-Polyglot-12.8B-v2 fp16 모델](https://huggingface.co/metterian/kullm-polyglot-12.8b) 공개
+  - [🤗Polyglot-ko 12.8B 기반 KULLM-Polyglot-12.8B-v2 fp16 모델](https://huggingface.co/taeminlee/kullm-polyglot-12.8b-v2) 공개
   - 구름(KULLM) 데이터셋 v2 공개
 - 2023.05.30: [🤗Polyglot-ko 12.8B 기반 KULLM-Polyglot-12.8B fp16 모델](https://huggingface.co/metterian/kullm-polyglot-12.8b) 공개
 
@@ -31,7 +31,7 @@ KULLM(구름)은 고려대학교 [NLP & AI 연구실](http://blp.korea.ac.kr/)�
 
 KULLM(구름)은 백본 모델로 한국어 모델은 Polyglot-ko(12.8B)모델을 사용하여 학습을 진행했습니다.
 
-1. Polyglot-ko 12.8B 기반-v2 -> 🤗 [metterian/kullm-polyglot-12.8b-v2](https://huggingface.co/metterian/kullm-polyglot-12.8b-v2)
+1. Polyglot-ko 12.8B 기반-v2 -> 🤗 [taeminlee/kullm-polyglot-12.8b-v2](https://huggingface.co/taeminlee/kullm-polyglot-12.8b-v2)
     - 데이터셋 v2: [GPT4ALL](https://github.com/nomic-ai/gpt4all), [Dolly](https://github.com/databrickslabs/dolly), [Vicuna](https://github.com/lm-sys/FastChat)
 2. Polyglot-ko 12.8B 기반-v1 -> 🤗 [metterian/kullm-polyglot-12.8b-v1](https://huggingface.co/metterian/kullm-polyglot-12.8b-v1)
     - 데이터셋 v1: GPT4ALL
@@ -56,7 +56,7 @@ pip install -U torch transformers tokenizers accelerate
 import torch
 from transformers import pipeline, AutoModelForCausalLM
 
-MODEL = 'metterian/kullm-polyglot-12.8b-v2'
+MODEL = 'taeminlee/kullm-polyglot-12.8b-v2'
 
 model = AutoModelForCausalLM.from_pretrained(
     MODEL,
@@ -85,7 +85,7 @@ def ask(x, context='', is_input_full=False):
     print(ans[0]['generated_text'])
 
 ask("딥러닝이 뭐야?")
-# 딥러닝은 인공신경망을 통해 입력과 출력 사이의 복잡한 관계를 학습하는 머신러닝의 한 분야입니다. 이 기술은 컴퓨터가 인간의 학습 능력과 유사한 방식으로 패턴을 학습하도록 하며, 인간의 개입 없이도 데이터를 처리할 수 있는 기술입니다. 최근에는 딥러닝을 활용한 인공지능 애플리케이션이 많이 개발되고 있습니다. 예를 들어, 의료 진단 애플리케이션에서는 딥러닝 기술을 활용하여 환자의 특징을 파악하고, 이를 통해 빠르고 정확한 진단을 내리는 데 사용됩니다. 또한, 금융 분야에서는 딥러닝 기술을 활용하여 주가 예측 모형을 학습하는 데 사용되기도 합니다.
+# 딥러닝은 인간의 두뇌를 모방한 알고리즘을 사용하여 이미지, 음성, 텍스트 등의 데이터를 학습하는 인공 지능의 한 형태입니다. 머신 러닝이라고도 합니다. 컴퓨터가 데이터를 학습하여 패턴을 인식하고 예측하는 데 사용되며, 자연어 처리 및 이미지 인식과 같은 애플리케이션에 사용됩니다. 머신 러닝은 컴퓨터가 데이터를 통해 학습하고 성능을 향상시킬 수 있도록 하는 알고리즘을 구축하는 데 사용됩니다. 머신 러닝은 인공 지능의 하위 집합으로 간주되며, 인간의 두뇌를 모방하도록 설계되었습니다. 머신 러닝은 데이터를 분석하고 알고리즘을 사용하여 패턴을 인식하고 예측하는 방식으로 작동합니다. 머신 러닝의 목표는 데이터를 학습하여 성능을 향상시키는 것입니다.
 ```
 
 <br/>
