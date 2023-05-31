@@ -4,6 +4,9 @@
 
 ## Update Logs
 
+- 2023.05.31:
+  - [🤗Polyglot-ko 12.8B 기반 KULLM-Polyglot-12.8B-v2 fp16 모델](https://huggingface.co/metterian/kullm-polyglot-12.8b) 공개
+  - 구름(KULLM) 데이터셋 v2 공개
 - 2023.05.30: [🤗Polyglot-ko 12.8B 기반 KULLM-Polyglot-12.8B fp16 모델](https://huggingface.co/metterian/kullm-polyglot-12.8b) 공개
 
 ---
@@ -115,9 +118,12 @@ data/user_oriented_instructions_train.jsonl)에 저장되어 있습니다.
 
 ## Training with LoRA
 
-### Polyglot 13B 모델 학습
+KULLM은 한국어 모델로 Polyglot 12.8B 모델을 LoRA (Low Rank Adaptation)를 사용하여 학습하였습니다.
 
-🤗 Huggingface Repo: [metterian/kullm-polyglot-12.8b](https://huggingface.co/metterian/kullm-polyglot-12.8b)
+1. Polyglot-ko 12.8B 기반-v2 -> 🤗 [metterian/kullm-polyglot-12.8b-v2](https://huggingface.co/metterian/kullm-polyglot-12.8b-v2)
+    - 데이터셋 v2: GPT4ALL, Dolly, Vicuna
+2. Polyglot-ko 12.8B 기반-v1 -> 🤗 [metterian/kullm-polyglot-12.8b-v1](https://huggingface.co/metterian/kullm-polyglot-12.8b-v1)
+    - 데이터셋 v1: GPT4ALL
 
 모델 학습은 A100 80GB 4대로 진행했습니다. 학습에 사용한 코드는 [tloen/alpaca-lora](https://github.com/tloen/alpaca-lora)을 기반으로 사용하였습니다.
 
@@ -173,7 +179,7 @@ python -m torch.distributed.launch  --master_port=34322  --nproc_per_node 4 fine
 
 <br/>
 
-## Model Evaluation
+## Evaluation
 
 - 모델 평가는 G-Eval: NLG Evaluation using GPT-4 with Better Human Alignment (Yang Liu. et. al. 2023)의 방법론을 사용하였습니다. 평가 데이터셋은 [yizhongw/self-instruct](https://github.com/yizhongw/self-instruct)의 휴먼 평가 데이터셋인 `user_oriented_instructions.jsonl`을 deepl로 번역한 데이터셋을 사용하였습니다.
 
@@ -191,6 +197,6 @@ python -m torch.distributed.launch  --master_port=34322  --nproc_per_node 4 fine
 | GPT4        | 87.6  |
 | Alpaca v1.1 | 40.6  |
 | koVicuna    | 50.2  |
-| KULMM       | 62.3  |
+| KULMM v2    | 62.3  |
 
 ---
