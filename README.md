@@ -6,7 +6,7 @@
 
 - 2023.05.31:
   - [🤗Polyglot-ko 12.8B 기반 KULLM-Polyglot-12.8B-v2 fp16 모델](https://huggingface.co/taeminlee/kullm-polyglot-12.8b-v2) 공개
-  - (구름(KULLM) 데이터셋 v2)[http://gofile.me/6VWV1/dJZtegkaD] 공개
+  - (구름(KULLM) 데이터셋 v2)[http://gofile.me/6VWV1/PBpR0iYpq] 공개
 - 2023.05.30: [🤗Polyglot-ko 12.8B 기반 KULLM-Polyglot-12.8B fp16 모델](https://huggingface.co/metterian/kullm-polyglot-12.8b) 공개
 
 ---
@@ -95,7 +95,7 @@ infer(input_text="고려대학교에 대해서 알려줘")
 
 GPT4ALL은 instruction tuned assistant-style language model이며, Vicuna와 Dolly 데이터셋은 다양한 자연어 처리 문제를 해결하는 데 활용됩니다. 특히, Dolly는 instruction/response fine tuning records를 훈련 데이터로 사용한 언어 모델입니다.
 
-[링크](http://gofile.me/6VWV1/dJZtegkaD)
+[링크](http://gofile.me/6VWV1/PBpR0iYpq)
 
 다운로드 후, `data` 폴더로 이동해주세요.
 
@@ -218,4 +218,5 @@ python -m torch.distributed.launch  --master_port=34322  --nproc_per_node 4 fine
 | Open   | Polyglot-ko-12.8b | **KULMM v2**                                                         | **62.3** | **71.1**                  |
 | Open   | Polyglot-ko-5.8b  | [KoAlpaca v1.1](https://huggingface.co/beomi/KoAlpaca-Polyglot-5.8B) | 40.6     | 46.3                      |
 | Open   | LLaMA-7b          | [koVicuna](https://huggingface.co/junelee/ko_vicuna_7b)              | 50.2     | 57.3                      |
+
 ---
