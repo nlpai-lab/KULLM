@@ -192,9 +192,9 @@ python -m torch.distributed.launch  --master_port=34322  --nproc_per_node 4 fine
 | Closed     | ChatGPT       | 83.3      | 95.1                      |
 | Open       | **KULMM**     | **62.3**  | **71.1**                  |
 | Open       | Alpaca v1.1   | 40.6      | 46.3                      |
-| Open       | koVicuna      | 50.2      | 95.1                      |
+| Open       | koVicuna      | 50.2      | 57.3                      |
 
-*Closed* : Model whose parameters are not publicly available
-*Open* : Model with publicly available parameters
+- *Closed* : Model whose parameters are not publicly available
+- *Open* : Model with publicly available parameters
 
 ---
