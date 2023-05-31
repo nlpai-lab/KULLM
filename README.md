@@ -5,9 +5,9 @@
 ## Update Logs
 
 - 2023.05.31:
-  - [🤗Polyglot-ko 12.8B 기반 KULLM-Polyglot-12.8B-v2 fp16 모델](https://huggingface.co/taeminlee/kullm-polyglot-12.8b-v2) 공개
+  - 🤗Polyglot-ko 12.8B 기반 [KULLM-Polyglot-12.8B-v2 모델](https://huggingface.co/taeminlee/kullm-polyglot-12.8b-v2) 공개
   - [구름(KULLM) 데이터셋 v2](http://gofile.me/6VWV1/PBpR0iYpq) 공개
-- 2023.05.30: [🤗Polyglot-ko 12.8B 기반 KULLM-Polyglot-12.8B fp16 모델](https://huggingface.co/metterian/kullm-polyglot-12.8b) 공개
+- 2023.05.30: 🤗Polyglot-ko 12.8B 기반 [KULLM-Polyglot-12.8B 모델](https://huggingface.co/metterian/kullm-polyglot-12.8b) 공개
 
 ---
 
@@ -81,7 +81,8 @@ def infer(instruction="", input_text=""):
     return result
 
 
-infer(input_text="고려대학교에 대해서 알려줘")
+result = infer(input_text="고려대학교에 대해서 알려줘")
+print(result)
 # '고려대학교에 대해 궁금한 점이 있으시면 언제든지 문의해 주세요. 고려대학교는 한국에서 가장 오래되고 권위 있는 대학교 중 하나로, 고려대학교의 역사는 한국의 역사와 함께해 왔습니다. 고려대학교는 학문적 우수성을 추구하는 동시에 사회적 책임을 다하기 위해 최선을 다하고 있습니다. 고려대학교는 학생, 교수진, 교직원을 위한 다양한 프로그램과 지원을 제공하는 것으로 유명합니다. 고려대학교는 한국의 정치, 경제, 사회 분야에서 중요한 역할을 담당하고 있습니다. 고려대학교에 대해 더 자세히 알고 싶으신가요?'
 ```
 
@@ -93,7 +94,7 @@ infer(input_text="고려대학교에 대해서 알려줘")
 
 [다운로드](http://gofile.me/6VWV1/PBpR0iYpq)
 
-구름 데이터셋 v2는 [GPT4ALL](https://github.com/nomic-ai/gpt4all), [Vicuna](https://github.com/lm-sys/FastChat), 그리고 Databricks의 [Dolly](https://github.com/databrickslabs/dolly) 데이터셋을 병합한 것입니다. 이 모든 데이터셋은 DEEPL을 이용하여 한국어로 번역되었습니다.
+구름 데이터셋 v2는 [GPT4ALL](https://github.com/nomic-ai/gpt4all), [Vicuna](https://github.com/lm-sys/FastChat), 그리고 Databricks의 [Dolly](https://github.com/databrickslabs/dolly) 데이터셋을 병합한 것입니다. 이 모든 데이터셋은 DeepL을 이용하여 한국어로 번역되었습니다.
 
 GPT4ALL은 instruction tuned assistant-style language model이며, Vicuna와 Dolly 데이터셋은 다양한 자연어 처리 문제를 해결하는 데 활용됩니다. 특히, Dolly는 instruction/response fine tuning records를 훈련 데이터로 사용한 언어 모델입니다.
 
@@ -108,7 +109,6 @@ GPT4ALL은 instruction tuned assistant-style language model이며, Vicuna와 Dol
 GPT4ALL 데이터셋은 다음과 같이 Instruct 부분과 Input, 그리고 Output 부분으로 구성되어있습니다.
 
 ```json
-...
 {
     "id": "user_oriented_task_235",
     "motivation_app": "Yelp",
@@ -120,11 +120,9 @@ GPT4ALL 데이터셋은 다음과 같이 Instruct 부분과 Input, 그리고 Out
         }
     ]
 },
-...
 ```
 
-한국어로 번역된 데이터셋은 [`user_oriented_instructions_train.jsonl`](README.md
-data/user_oriented_instructions_train.jsonl)에 저장되어 있습니다.
+한국어로 번역된 데이터셋은 [`kullm-v2.jsonl`](data/kullm-v2.jsonl)에 저장되어 있습니다.
 
 <br>
 
@@ -163,38 +161,38 @@ pip install -r requirements.txt
 사용 예시:
 
 ```
-finetune_polyglot.py \
+python finetune_polyglot.py \
 --base_model='EleutherAI/polyglot-ko-12.8b' \
---data_path='/data/persuade/01_KuAlpaca/alpaca_data_gpt4_deepl+gpt4_ko.jsonl'
+--data_path='./data/kullm-v2.jsonl'
 ```
 
 다음과 같이 하이퍼파라미터를 조정할 수도 있습니다:
 
 ```bash
 python -m torch.distributed.launch  --master_port=34322  --nproc_per_node 4 finetune_polyglot.py \
-    --fp16 \
-    --base_model 'EleutherAI/polyglot-ko-12.8b' \
-    --data_path data/kullm-v2.jsonl \
-    --output_dir ckpt/$SAVE_DIR \
-    --prompt_template_name kullm \
-    --batch_size 128 \
-    --micro_batch_size 4 \
-    --num_epochs $EPOCH \
-    --learning_rate $LR \
-    --cutoff_len 512 \
-    --val_set_size 2000 \
-    --lora_r 8 \
-    --lora_alpha 16 \
-    --lora_dropout 0.05 \
-    --lora_target_modules "[query_key_value, xxx]" \
-    --train_on_inputs \
-    --logging_steps 1 \
-    --eval_steps 40 \
-    --weight_decay 0. \
-    --warmup_steps 0 \
-    --warmup_ratio 0.1 \
-    --lr_scheduler_type "cosine" \
-    --group_by_length
+--fp16 \
+--base_model 'EleutherAI/polyglot-ko-12.8b' \
+--data_path data/kullm-v2.jsonl \
+--output_dir ckpt/$SAVE_DIR \
+--prompt_template_name kullm \
+--batch_size 128 \
+--micro_batch_size 4 \
+--num_epochs $EPOCH \
+--learning_rate $LR \
+--cutoff_len 512 \
+--val_set_size 2000 \
+--lora_r 8 \
+--lora_alpha 16 \
+--lora_dropout 0.05 \
+--lora_target_modules "[query_key_value, xxx]" \
+--train_on_inputs \
+--logging_steps 1 \
+--eval_steps 40 \
+--weight_decay 0. \
+--warmup_steps 0 \
+--warmup_ratio 0.1 \
+--lr_scheduler_type "cosine" \
+--group_by_length
 ```
 
 <br/>
