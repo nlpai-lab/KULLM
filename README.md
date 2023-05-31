@@ -76,7 +76,7 @@ def infer(instruction="", input_text=""):
     prompt = prompter.generate_prompt(instruction, input_text)
     output = pipe(prompt, max_length=512, temperature=0.2, num_beams=5, eos_token_id=2)
     s = output[0]["generated_text"]
-    result = prompter.postprocess(s)
+    result = prompter.get_response(s)
 
     return result
 
