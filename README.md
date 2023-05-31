@@ -1,5 +1,6 @@
 <p align="center" width="100%">
-<img src="assets/logo.png" alt="NLP & AI Logo" style="width: 60%;">
+<img src="https://github.com/nlpai-lab/KULLM/raw/master/assets/logo.png" alt="NLP & AI Logo" style="width: 40%;">
+<img src="https://i.imgur.com/NTlTxO3.png" alt="HIAI Logo" style="margin-left:5%; width: 40%;">
 </p>
 
 ## Update Logs
@@ -10,9 +11,9 @@
 
 <br>
 
-# ☁️ KULLM (구름): Korea University Large Langauge Model Project (feat. Polyglot-ko)
+# ☁️ KULLM (구름): Korea University Large Langauge Model
 
-KULLM(구름)은 고려대학교 [NLP & AI 연구실](http://blp.korea.ac.kr/)에서 개발한, 한국어에 특화된 LLM (Large Language Model) 프로젝트입니다.
+KULLM(구름)은 고려대학교 [NLP & AI 연구실](http://blp.korea.ac.kr/)과 [HIAI 연구소](http://hiai.korea.ac.kr)에서 개발한, 한국어에 특화된 LLM (Large Language Model) 프로젝트입니다.
 
 <br/>
 
@@ -183,14 +184,17 @@ python -m torch.distributed.launch  --master_port=34322  --nproc_per_node 4 fine
 
 - TBA.
 
-### Result of Evalution
+### LLM Inference Results for Korean Evaluation Set
 
-| Model       | Score |
-| ----------- | ----- |
-| ChatGPT     | 83.3  |
-| GPT4        | 87.6  |
-| Alpaca v1.1 | 40.6  |
-| koVicuna    | 50.2  |
-| KULMM       | 62.3  |
+| Type       | Model         | Score     | Releative Score (vs GPT4) | 
+| ---------- | ------------- | --------: | ------------------------: |
+| Closed     | GPT4          | 87.6      | 100                       |
+| Closed     | ChatGPT       | 83.3      | 95.1                      |
+| Open       | **KULMM**     | **62.3**  | **71.1**                  |
+| Open       | Alpaca v1.1   | 40.6      | 46.3                      |
+| Open       | koVicuna      | 50.2      | 95.1                      |
+
+*Closed* : Model whose parameters are not publicly available
+*Open* : Model with publicly available parameters
 
 ---
