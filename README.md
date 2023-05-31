@@ -18,6 +18,8 @@
 
 KULLM(구름)은 고려대학교 [NLP & AI 연구실](http://blp.korea.ac.kr/)과 [HIAI 연구소](http://hiai.korea.ac.kr)에서 개발한, 한국어에 특화된 LLM (Large Language Model) 프로젝트입니다.
 
+구름 프로젝트는 한국어에 특화된 데이터셋을 공개하여 다양한 태스크를 아우르는 AI 모델을 제공하고자 합니다.
+
 <br/>
 
 ## Example
@@ -31,7 +33,7 @@ KULLM(구름)은 고려대학교 [NLP & AI 연구실](http://blp.korea.ac.kr/)�
 KULLM(구름)은 백본 모델로 한국어 모델은 Polyglot-ko(12.8B)모델을 사용하여 학습을 진행했습니다.
 
 1. Polyglot-ko 12.8B 기반-v2 -> 🤗 [metterian/kullm-polyglot-12.8b-v2](https://huggingface.co/metterian/kullm-polyglot-12.8b-v2)
-    - 데이터셋 v2: GPT4ALL, Dolly, Vicuna
+    - 데이터셋 v2: [GPT4ALL](https://github.com/nomic-ai/gpt4all), [Dolly](https://github.com/databrickslabs/dolly), [Vicuna](https://github.com/lm-sys/FastChat)
 2. Polyglot-ko 12.8B 기반-v1 -> 🤗 [metterian/kullm-polyglot-12.8b-v1](https://huggingface.co/metterian/kullm-polyglot-12.8b-v1)
     - 데이터셋 v1: GPT4ALL
 
@@ -91,7 +93,17 @@ ask("딥러닝이 뭐야?")
 
 ## Dataset
 
-데이터셋은 기본적으로 [GPT4ALL](https://github.com/nomic-ai/gpt4all)을 기반으로 합니다. GPT4ALL은 뛰어난 instruction tuned assistant-style language model로, 누구나 자유롭게 사용, 배포, 확장할 수 있도록 설계되었습니다. GPT4ALL 데이터셋은 DEEPL을 사용하여 한국어로 번역하였습니다.
+### 구름 데이터셋 v2
+
+구름 데이터셋 v2는 [GPT4ALL](https://github.com/nomic-ai/gpt4all), [Vicuna](https://github.com/lm-sys/FastChat), 그리고 Databricks의 [Dolly](https://github.com/databrickslabs/dolly) 데이터셋을 병합한 것입니다. 이 모든 데이터셋은 DEEPL을 이용하여 한국어로 번역되었습니다.
+
+GPT4ALL은 instruction tuned assistant-style language model이며, Vicuna와 Dolly 데이터셋은 다양한 자연어 처리 문제를 해결하는 데 활용됩니다. 특히, Dolly는 instruction/response fine tuning records를 훈련 데이터로 사용한 언어 모델입니다.
+
+구름 데이터셋은 이들 데이터셋을 활용하여 다양한 태스크를 아우르는 AI 모델을 제공합니다.
+
+### 구름 데이터셋 v1
+
+구름 데이터셋 v1은 GPT4ALL을 기반으로 합니다.
 
 #### 데이터셋 예시
 
