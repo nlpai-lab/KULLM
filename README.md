@@ -1,5 +1,5 @@
 <p align="center" width="100%">
-<img src="https://github.com/nlpai-lab/KULLM/raw/master/assets/logo.png" alt="Logo" style="width: 40%;">
+<img src="assets/logo.png" alt="NLP Logo" style="width: 90%;">
 </p>
 
 ## Update Logs
