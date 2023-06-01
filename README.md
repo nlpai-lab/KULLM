@@ -28,7 +28,7 @@ KULLM(구름)은 고려대학교 [NLP & AI 연구실](http://blp.korea.ac.kr/)�
 
 KULLM(구름)은 Backbone Model로 Polyglot-ko(12.8B)을 사용하여 학습을 진행하였습니다.
 
-1. Polyglot-ko 12.8B 기반-v2 -> 🤗 [taeminlee/kullm-polyglot-12.8b-v2](https://huggingface.co/nlpai-lab/kullm-polyglot-12.8b-v2)
+1. Polyglot-ko 12.8B 기반-v2 -> 🤗 [nlpai-lab/kullm-polyglot-12.8b-v2](https://huggingface.co/nlpai-lab/kullm-polyglot-12.8b-v2)
     - 데이터셋 v2: [GPT4ALL](https://github.com/nomic-ai/gpt4all), [Dolly](https://github.com/databrickslabs/dolly), [Vicuna](https://github.com/lm-sys/FastChat)
 2. Polyglot-ko 12.8B 기반-v1 -> 🤗 [metterian/kullm-polyglot-12.8b-v1](https://huggingface.co/metterian/kullm-polyglot-12.8b-v1)
     - 데이터셋 v1: GPT4ALL
