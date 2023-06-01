@@ -14,7 +14,9 @@
 
 # ☁️ KULLM (구름): Korea University Large Langauge Model via Data-Centric Approach
 
-> KULLM(구름)은 고려대학교 [NLP & AI 연구실](http://blp.korea.ac.kr/)과 [HIAI 연구소](http://hiai.korea.ac.kr)가 개발한 한국어 Large Language Model (LLM) 입니다. Model-Centric하게 접근하기보다, Data-Centric하게 접근하여 LLM의 성능을 극대화 시켰습니다. 모델 뿐만 아니라, 데이터 셋까지 전면 공개하여 한국어 LLM 생태계의 기여하고자 하였습니다.
+KULLM(구름)은 고려대학교 [NLP & AI 연구실](http://blp.korea.ac.kr/)과 [HIAI 연구소](http://hiai.korea.ac.kr)가 개발한 한국어 Large Language Model (LLM) 입니다.
+
+Model-Centric하게 접근하기보다, Data-Centric하게 접근하여 LLM의 성능을 극대화 시켰습니다. 모델 뿐만 아니라, 데이터 셋까지 전면 공개하여 한국어 LLM 생태계의 기여하고자 하였습니다.
 
 <br/>
 
