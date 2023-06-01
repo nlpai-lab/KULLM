@@ -231,7 +231,7 @@ Please cite the repo if you use the data or code in this repo.
 
 ```
 @misc{kullm,
-  author = {NLP & AI Lab and HIAI},
+  author = {NLP & AI Lab and Human-Inspired AI research},
   title = {KULLM: Korea University Large Language Model Project},
   year = {2023},
   publisher = {GitHub},
