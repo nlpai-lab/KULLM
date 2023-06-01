@@ -5,7 +5,7 @@
 ## Update Logs
 
 - 2023.05.31:
-  - [🤗Polyglot-ko 12.8B 기반 KULLM-Polyglot-12.8B-v2 fp16 모델](https://huggingface.co/taeminlee/kullm-polyglot-12.8b-v2) 공개
+  - [🤗Polyglot-ko 12.8B 기반 KULLM-Polyglot-12.8B-v2 fp16 모델 공개](https://huggingface.co/nlpai-lab/kullm-polyglot-12.8b-v2)
   - [구름(KULLM) 데이터셋 v2](http://gofile.me/6VWV1/akKVL6AMQ) 공개
 - 2023.05.30: [🤗Polyglot-ko 12.8B 기반 KULLM-Polyglot-12.8B fp16 모델](https://huggingface.co/metterian/kullm-polyglot-12.8b) 공개
 
@@ -29,7 +29,7 @@ KULLM(구름)은 고려대학교 [NLP & AI 연구실](http://blp.korea.ac.kr/)�
 
 KULLM(구름)은 Backbone Model로 Polyglot-ko(12.8B)을 사용하여 학습을 진행하였습니다.
 
-1. Polyglot-ko 12.8B 기반-v2 -> 🤗 [taeminlee/kullm-polyglot-12.8b-v2](https://huggingface.co/taeminlee/kullm-polyglot-12.8b-v2)
+1. Polyglot-ko 12.8B 기반-v2 -> 🤗 [taeminlee/kullm-polyglot-12.8b-v2](https://huggingface.co/nlpai-lab/kullm-polyglot-12.8b-v2)
     - 데이터셋 v2: [GPT4ALL](https://github.com/nomic-ai/gpt4all), [Dolly](https://github.com/databrickslabs/dolly), [Vicuna](https://github.com/lm-sys/FastChat)
 2. Polyglot-ko 12.8B 기반-v1 -> 🤗 [metterian/kullm-polyglot-12.8b-v1](https://huggingface.co/metterian/kullm-polyglot-12.8b-v1)
     - 데이터셋 v1: GPT4ALL
@@ -56,7 +56,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline
 
 from utils.prompter import Prompter
 
-MODEL = "taeminlee/kullm-polyglot-12.8b-v2"
+MODEL = "nlpai-lab/kullm-polyglot-12.8b-v2"
 
 model = AutoModelForCausalLM.from_pretrained(
     MODEL,
@@ -132,7 +132,7 @@ KULLM은 한국어 모델로 Polyglot 12.8B 모델을 Low Rank Adaptation (LoRA)
 
 ### KULLM v2
 
-🤗 Huggingface Repo: [https://huggingface.co/taeminlee/kullm-polyglot-12.8b-v2](https://huggingface.co/taeminlee/kullm-polyglot-12.8b-v2)
+🤗 Huggingface Repo: [https://huggingface.co/taeminlee/kullm-polyglot-12.8b-v2](https://huggingface.co/nlpai-lab/kullm-polyglot-12.8b-v2)
 
 모델 학습은 구름 데이터셋 v2 (GPT4ALL, Dolly, Vicuna)을 사용하여 진행했습니다. 총 8 epoch 학습하였으며, A100 80GB 4대를 사용했습니다.
 
@@ -207,7 +207,7 @@ python -m torch.distributed.launch  --master_port=34322  --nproc_per_node 4 fine
 | ------ | ----------------- | ------------------------------------------------------------ | -------- | ------------------------- |
 | Closed | GPT4              | GPT4                                                         | 87.6     | 100                       |
 | Closed | GPT3.5-turbo      | GPT3.5-turbo                                                 | 83.3     | 95.1                      |
-| Open   | Polyglot-ko-12.8b | **KULLM v2**                                                 | **62.3** | **71.1**                  |
+| Open   | Polyglot-ko-12.8b | [**KULLM v2**](https://huggingface.co/nlpai-lab/kullm-polyglot-12.8b-v2)                                                 | **62.3** | **71.1**                  |
 | Open   | Polyglot-ko-12.8b  | [KoAlpaca v1.1](https://huggingface.co/beomi/KoAlpaca-Polyglot-12.8B) | 40.6     | 46.3                      |
 | Open   | LLaMA-7b          | [koVicuna](https://huggingface.co/junelee/ko_vicuna_7b)      | 50.2     | 57.3                      |
 
