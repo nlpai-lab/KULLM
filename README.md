@@ -208,7 +208,7 @@ python -m torch.distributed.launch  --master_port=34322  --nproc_per_node 4 fine
 | Closed | GPT4              | GPT4                                                         | 87.6     | 100                       |
 | Closed | GPT3.5-turbo      | GPT3.5-turbo                                                 | 83.3     | 95.1                      |
 | Open   | Polyglot-ko-12.8b | **KULLM v2**                                                 | **62.3** | **71.1**                  |
-| Open   | Polyglot-ko-5.8b  | [KoAlpaca v1.1](https://huggingface.co/beomi/KoAlpaca-Polyglot-5.8B) | 40.6     | 46.3                      |
+| Open   | Polyglot-ko-12.8b  | [KoAlpaca v1.1](https://huggingface.co/beomi/KoAlpaca-Polyglot-5.8B) | 40.6     | 46.3                      |
 | Open   | LLaMA-7b          | [koVicuna](https://huggingface.co/junelee/ko_vicuna_7b)      | 50.2     | 57.3                      |
 
 ---
