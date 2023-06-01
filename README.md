@@ -142,7 +142,7 @@ KULLM은 한국어 모델로 Polyglot 12.8B 모델을 Low Rank Adaptation (LoRA)
 
 ### KULLM v2
 
-🤗 Huggingface Repo: [https://huggingface.co/taeminlee/kullm-polyglot-12.8b-v2](https://huggingface.co/nlpai-lab/kullm-polyglot-12.8b-v2)
+🤗 Huggingface Repo: [https://huggingface.co/nlpai-lab/kullm-polyglot-12.8b-v2](https://huggingface.co/nlpai-lab/kullm-polyglot-12.8b-v2)
 
 모델 학습은 구름 데이터셋 v2 (GPT4ALL, Dolly, Vicuna)을 사용하여 진행했습니다. 총 8 epoch 학습하였으며, A100 80GB 4대를 사용했습니다.
 
