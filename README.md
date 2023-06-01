@@ -4,9 +4,10 @@
 
 ## Update Logs
 
+- 2023.06.01: [구름(KULLM) 데이터셋 v2](https://huggingface.co/datasets/nlpai-lab/kullm-v2) HuggingFace Datasets 공개
+
 - 2023.05.31:
   - [🤗Polyglot-ko 12.8B 기반 KULLM-Polyglot-12.8B-v2 fp16 모델 공개](https://huggingface.co/nlpai-lab/kullm-polyglot-12.8b-v2)
-  - [구름(KULLM) 데이터셋 v2](http://gofile.me/6VWV1/akKVL6AMQ) 공개
 - 2023.05.30: [🤗Polyglot-ko 12.8B 기반 KULLM-Polyglot-12.8B fp16 모델](https://huggingface.co/metterian/kullm-polyglot-12.8b) 공개
 
 ---
@@ -90,13 +91,24 @@ print(result)
 
 ### 구름 데이터셋 v2
 
-[다운로드](http://gofile.me/6VWV1/akKVL6AMQ)
+[HuggingFace Datasets](https://huggingface.co/datasets/nlpai-lab/kullm-v2)
 
 구름 데이터셋 v2는 [GPT4ALL](https://github.com/nomic-ai/gpt4all), [Vicuna](https://github.com/lm-sys/FastChat), 그리고 Databricks의 [Dolly](https://github.com/databrickslabs/dolly) 데이터셋을 병합한 것입니다. 이 모든 데이터셋은 DeepL을 이용하여 한국어로 번역되었습니다.
 
 GPT4ALL은 instruction tuned assistant-style language model이며, Vicuna와 Dolly 데이터셋은 다양한 자연어 처리 문제를 해결하는 데 활용됩니다. 특히, Dolly는 instruction/response fine tuning records를 훈련 데이터로 사용한 언어 모델입니다.
 
-다운로드 후, `data` 폴더로 이동해주세요.
+```python
+from datasets import load_dataset
+
+ds = load_dataset("nlpai-lab/kullm-v2", split="train")
+ds
+DatasetDict({
+    train: Dataset({
+        features: ['id', 'instruction', 'input', 'output'],
+        num_rows: 152630
+    })
+})
+```
 
 ### 구름 데이터셋 v1
 
@@ -214,6 +226,7 @@ python -m torch.distributed.launch  --master_port=34322  --nproc_per_node 4 fine
 ---
 
 ## Citation
+
 Please cite the repo if you use the data or code in this repo.
 
 ```
