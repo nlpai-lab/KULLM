@@ -4,6 +4,7 @@
 
 ## Update Logs
 
+- 2023.06.08: [🤗Polyglot-ko 5.8B 기반 KULLM-Polyglot-5.8B-v2 fp16 모델 공개](https://huggingface.co/nlpai-lab/kullm-polyglot-5.8b-v2)
 - 2023.06.01: [구름(KULLM) 데이터셋 v2](https://huggingface.co/datasets/nlpai-lab/kullm-v2) HuggingFace Datasets 공개
 - 2023.05.31: [🤗Polyglot-ko 12.8B 기반 KULLM-Polyglot-12.8B-v2 fp16 모델 공개](https://huggingface.co/nlpai-lab/kullm-polyglot-12.8b-v2)
 - 2023.05.30: [🤗Polyglot-ko 12.8B 기반 KULLM-Polyglot-12.8B fp16 모델](https://huggingface.co/metterian/kullm-polyglot-12.8b) 공개
@@ -28,14 +29,16 @@ Model-Centric하게 접근하기보다, Data-Centric하게 접근하여 LLM의 �
 
 ## Backbone Model?: Polyglot-ko
 
-KULLM(구름)은 Backbone Model로 Polyglot-ko(12.8B)을 사용하여 학습을 진행하였습니다.
+KULLM(구름)은 Backbone Model로 [Polyglot-ko](https://github.com/EleutherAI/polyglot)을 사용하여 학습을 진행하였습니다.
 
-1. Polyglot-ko 12.8B 기반-v2 -> 🤗 [nlpai-lab/kullm-polyglot-12.8b-v2](https://huggingface.co/nlpai-lab/kullm-polyglot-12.8b-v2)
+1. Polyglot-ko 5.8B 기반-v2 -> 🤗 [nlpai-lab/kullm-polyglot-5.8b-v2](https://huggingface.co/nlpai-lab/kullm-polyglot-5.8b-v2)
     - 데이터셋 v2: [GPT4ALL](https://github.com/nomic-ai/gpt4all), [Dolly](https://github.com/databrickslabs/dolly), [Vicuna](https://github.com/lm-sys/FastChat)
-2. Polyglot-ko 12.8B 기반-v1 -> 🤗 [metterian/kullm-polyglot-12.8b-v1](https://huggingface.co/metterian/kullm-polyglot-12.8b-v1)
+2. Polyglot-ko 12.8B 기반-v2 -> 🤗 [nlpai-lab/kullm-polyglot-12.8b-v2](https://huggingface.co/nlpai-lab/kullm-polyglot-12.8b-v2)
+    - 데이터셋 v2: [GPT4ALL](https://github.com/nomic-ai/gpt4all), [Dolly](https://github.com/databrickslabs/dolly), [Vicuna](https://github.com/lm-sys/FastChat)
+3. Polyglot-ko 12.8B 기반-v1 -> 🤗 [metterian/kullm-polyglot-12.8b-v1](https://huggingface.co/metterian/kullm-polyglot-12.8b-v1)
     - 데이터셋 v1: GPT4ALL
 
-Meta의 LLAMA 모델과 Polyglot의 12.8B 이하의 모델은 테스트 결과 한국어 성능이 좋지 못하여 공개하지 않기로 했습니다. 추후 여러 좋은 한국어 성능을 보여주는 LLM 모델을 학습하여 공개하고자 합니다.
+Meta의 LLAMA 모델을 백본으로 만든 모델은 테스트 결과 한국어 성능이 좋지 못하여 공개하지 않기로 했습니다. 추후 여러 좋은 한국어 성능을 보여주는 LLM 모델을 학습하여 공개하고자 합니다.
 
 <br/>
 
@@ -57,7 +60,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline
 
 from utils.prompter import Prompter
 
-MODEL = "nlpai-lab/kullm-polyglot-12.8b-v2"
+MODEL = "nlpai-lab/kullm-polyglot-5.8b-v2"
 
 model = AutoModelForCausalLM.from_pretrained(
     MODEL,
