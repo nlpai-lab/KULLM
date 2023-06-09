@@ -38,7 +38,7 @@ KULLM(구름)은 Backbone Model로 [Polyglot-ko](https://github.com/EleutherAI/p
 3. Polyglot-ko 12.8B 기반-v1 -> 🤗 [metterian/kullm-polyglot-12.8b-v1](https://huggingface.co/metterian/kullm-polyglot-12.8b-v1)
     - 데이터셋 v1: GPT4ALL
 
-Meta의 LLAMA 모델을 백본으로 만든 모델은 테스트 결과 한국어 성능이 좋지 못하여 공개하지 않기로 했습니다. 추후 여러 좋은 한국어 성능을 보여주는 LLM 모델을 학습하여 공개하고자 합니다.
+Meta의 LLaMA 모델을 백본으로 만든 모델은 테스트 결과 한국어 성능이 좋지 못하여 공개하지 않기로 했습니다. 추후 여러 좋은 한국어 성능을 보여주는 LLM 모델을 학습하여 공개하고자 합니다.
 
 <br/>
 
