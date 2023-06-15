@@ -13,7 +13,7 @@
 
 <br>
 
-# ☁️ KULLM (구름): Korea University Large Langauge Model
+# ☁️ KULLM (구름): Korea University Large Language Model
 
 KULLM(구름)은 고려대학교 [NLP & AI 연구실](http://blp.korea.ac.kr/)과 [HIAI 연구소](http://hiai.korea.ac.kr)가 개발한 한국어 Large Language Model (LLM) 입니다.
 
