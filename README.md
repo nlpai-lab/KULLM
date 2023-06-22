@@ -226,6 +226,46 @@ python -m torch.distributed.launch  --master_port=34322  --nproc_per_node 4 fine
 | Open   | Polyglot-ko-12.8b  | [KoAlpaca v1.1](https://huggingface.co/beomi/KoAlpaca-Polyglot-12.8B) | 40.6     | 46.3                      |
 | Open   | LLaMA-7b          | [koVicuna](https://huggingface.co/junelee/ko_vicuna_7b)      | 50.2     | 57.3                      |
 
+### Prompt
+
+```
+두 사람 간의 대화가 주어집니다. 다음의 지시문(Instruction), 입력(Input)을 받게 될 것입니다. 그리고 지시문과 입력에 대한 응답(Response)이 제시됩니다.
+당신의 작업은 응답을 평가 단계에 따라 응답을 평가하는 것입니다.
+이 평가 기준을 꼼꼼히 읽고 이해하는 것이 중요합니다. 평가하는 동안 이 문서를 계속 열어두고 필요할 때 참조해 주세요.
+
+평가 기준:
+- 이해 가능성 (0 - 1): Input에 기반하여 Response를 이해 할 수 있나요?
+- 자연스러움 (1 - 3): 사람이 자연스럽게 말할 법한 Instruction 인가요?
+- 맥락 유지 (1 - 3): Input을 고려했을 때 Response가 맥락을 유지하나요?
+- 흥미롭기 (1 - 3): Response가 지루한가요, 아니면 흥미로운가요?
+- Instruction 사용 (0 - 1): Instruction에 기반하여 Response를 생성 했나요?
+- 전반적인 품질 (1 - 5): 위의 답변을 바탕으로 이 발언의 전반적인 품질에 대한 인상은 어떤가요?
+
+평가 단계:
+1. Instruction, Input, 그리고 Response을 주의깊게 읽습니다.
+2. 위의 평가 기준에 따라 Response을 평가합니다.
+
+Instruction:
+{{instruction}}
+
+Input:
+{{input}}
+
+Response:
+{{response}}
+
+
+[Result]
+- Understandable:
+- Natural:
+- Maintains Context:
+- Interesting:
+- Uses Instruction:
+- Overall Quality:
+```
+
+<br/>
+
 ---
 
 ## Citation
