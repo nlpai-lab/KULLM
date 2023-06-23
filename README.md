@@ -212,7 +212,7 @@ python -m torch.distributed.launch  --master_port=34322  --nproc_per_node 4 fine
 
 ## Evaluation
 
-- 모델 평가는 G-Eval: NLG Evaluation using GPT-4 with Better Human Alignment (Yang Liu. et. al. 2023)과 USR: An Unsupervised and Reference Free Evaluation Metric for Dialog Generation (Shikib Mehri. et. al. 2020)을 활용하여 평가 Prompt를 구성했습니다.
+- 대화 평가 메트릭 (Dialogue Evaluation Metric)을 사용하여 모델 간 한국어 대화를 평가 했습니다. 대화 평가 메트릭은 G-Eval: NLG Evaluation using GPT-4 with Better Human Alignment (Yang Liu. et. al. 2023)과 USR: An Unsupervised and Reference Free Evaluation Metric for Dialog Generation (Shikib Mehri. et. al. 2020)을 활용하여 평가 Prompt를 구성했습니다.
 - 평가 모델은 GPT-4를 사용하였고, 평가 데이터셋은 [yizhongw/self-instruct](https://github.com/yizhongw/self-instruct)의 휴먼 평가 데이터셋인 `user_oriented_instructions.jsonl`을 deepl로 번역한 데이터셋을 사용하였습니다.
 - 해당 데이터셋은 [`user_oriented_instructions_eval.jsonl`](data/user_oriented_instructions_eval.jsonl)에 저장되어 있습니다.
 
@@ -220,13 +220,14 @@ python -m torch.distributed.launch  --master_port=34322  --nproc_per_node 4 fine
 
 ### LLM Inference Results for Korean Evaluation Set
 
-| Type   | Base-model                                                   | Model                                                        | 해 가능성 (0 - 1) | 자연스러움 (1 - 3) | 맥락 유지 (1 - 3) | 흥미롭기 (1 - 3) | 지시어 사용 (0-1) | 전반적인 품질  (1-5) |
-| ------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ----------------- | ------------------ | ----------------- | ---------------- | ----------------- | -------------------- |
-| Closed | GPT3.5-turbo                                                 | GPT3.5                                                       | 0.98              | 2.806              | 2.849             | 2.056            | 0.917             | 3.905                |
-| Closed | GPT4                                                         | GPT4                                                         | 0.984             | 2.897              | 2.944             | 2.143            | 0.968             | 4.083                |
-| Open   | [Polyglot-ko-12.8b](https://huggingface.co/beomi/KoAlpaca-Polyglot-12.8B) | [koVicuna](https://huggingface.co/junelee/ko_vicuna_7b)      | 0.651             | 1.909              | 1.901             | 1.583            | 0.385             | 2.575                |
-| Open   | LLaMA-7b                                                     | [koVicuna](https://huggingface.co/junelee/ko_vicuna_7b)      | 0.46              | 1.583              | 1.726             | 1.528            | 0.409             | 2.44                 |
-| Open   | Polyglot-ko-12.8b                                            | [KULLM v2](https://huggingface.co/nlpai-lab/kullm-polyglot-12.8b-v2) | 0.742             | 2.083              | 2.107             | 1.794            | 0.548             | 3.036                |
+| Type   | Base-model        | Model                                                        | 해 가능성 (0 - 1) | 자연스러움 (1 - 3) | 맥락 유지 (1 - 3) | 흥미롭기 (1 - 3) | 지시어 사용 (0-1) | 전반적인 품질  (1-5) |
+| ------ | ----------------- | ------------------------------------------------------------ | ----------------- | ------------------ | ----------------- | ---------------- | ----------------- | -------------------- |
+| Closed | GPT3.5-turbo      | GPT3.5                                                       | 0.98              | 2.806              | 2.849             | 2.056            | 0.917             | 3.905                |
+| Closed | GPT4              | GPT4                                                         | 0.984             | 2.897              | 2.944             | 2.143            | 0.968             | 4.083                |
+| Open   | Polyglot-ko-12.8b | [KoAlpaca v1.1](https://huggingface.co/beomi/KoAlpaca-Polyglot-12.8B) | 0.651             | 1.909              | 1.901             | 1.583            | 0.385             | 2.575                |
+| Open   | LLaMA-7b          | [koVicuna](https://huggingface.co/junelee/ko_vicuna_7b)      | 0.46              | 1.583              | 1.726             | 1.528            | 0.409             | 2.44                 |
+| Open   | Polyglot-ko-12.8b | [ KULLM v2](https://huggingface.co/nlpai-lab/kullm-polyglot-12.8b-v2) | 0.742             | 2.083              | 2.107             | 1.794            | 0.548             | 3.036                |
+
 
 ### Prompt
 
