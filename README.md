@@ -225,6 +225,7 @@ python -m torch.distributed.launch  --master_port=34322  --nproc_per_node 4 fine
 | ------ | ----------------- | ------------------------------------------------------------ | ----------------- | ------------------ | ----------------- | ---------------- | ----------------- | -------------------- |
 | Closed | GPT3.5-turbo      | GPT3.5                                                       | 0.980              | 2.806              | 2.849             | 2.056            | 0.917             | 3.905                |
 | Closed | GPT4              | GPT4                                                         | 0.984             | 2.897              | 2.944             | 2.143            | 0.968             | 4.083                |
+|  |  |  |  |  |  |  |  |  |
 | Open   | Polyglot-ko-12.8b | [KoAlpaca v1.1](https://huggingface.co/beomi/KoAlpaca-Polyglot-12.8B) | 0.651             | 1.909              | 1.901             | 1.583            | 0.385             | 2.575                |
 | Open   | LLaMA-7b          | [koVicuna](https://huggingface.co/junelee/ko_vicuna_7b)      | 0.460              | 1.583              | 1.726             | 1.528            | 0.409             | 2.440                 |
 | Open   | Polyglot-ko-12.8b | [ KULLM v2](https://huggingface.co/nlpai-lab/kullm-polyglot-12.8b-v2) | 0.742             | 2.083              | 2.107             | 1.794            | 0.548             | 3.036                |
