@@ -217,7 +217,7 @@ python -m torch.distributed.launch  --master_port=34322  --nproc_per_node 4 fine
 - 해당 데이터셋은 [`user_oriented_instructions_eval.jsonl`](data/user_oriented_instructions_eval.jsonl)에 저장되어 있습니다.
 
 
-![eval_result](./assets/eval_result.png)
+![eval_result](./assets/eval.png)
 - 그래프의 값은 0-100점으로 스케일링 되었습니다. 
 ### LLM Inference Results for Korean Evaluation Set
 
