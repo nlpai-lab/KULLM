@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" autoUpload="Always" serverName="yoonna@163.152.163.180:55022 password" remoteFilesAllowedToDisappearOnAutoupload="false">
+    <serverData>
+      <paths name="yoonna@163.152.163.180:55022 password">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/data/yoonna/KULLM" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
+  </component>
+</project>
