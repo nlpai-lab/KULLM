@@ -61,6 +61,10 @@ from transformers.trainer_utils import (
 )
 from transformers.utils import send_example_telemetry
 from transformers.utils.versions import require_version
+from setproctitle import setproctitle
+
+
+setproctitle("joon-sft")
 
 IGNORE_INDEX = -100
 DEFAULT_PAD_TOKEN = "[PAD]"
@@ -298,7 +302,9 @@ def main():
         "use_auth_token": True if model_args.use_auth_token else None,
     }
 
-    tokenizer = AutoTokenizer.from_pretrained(model_args.model_name_or_path, **tokenizer_kwargs)
+    tokenizer = AutoTokenizer.from_pretrained(
+        model_args.model_name_or_path, padding_side="right", **tokenizer_kwargs
+    )  # alpaca use padding_side="right"
 
     if tokenizer.pad_token is None:
         print(f"Adding pad token {DEFAULT_PAD_TOKEN}")
@@ -362,9 +368,10 @@ def main():
 
     logger.info(f"len(tokenizer):{len(tokenizer)}")
     embedding_size = model.get_input_embeddings().weight.shape[0]
-    if len(tokenizer) != embedding_size:
-        logger.info("resize the embedding size by the size of the tokenizer")
-        model.resize_token_embeddings(len(tokenizer))
+
+    # if len(tokenizer) != embedding_size:
+    #     logger.info("resize the embedding size by the size of the tokenizer")
+    #     model.resize_token_embeddings(len(tokenizer))
 
     if training_args.peft_path is not None:
         logger.info("Peft from pre-trained model")

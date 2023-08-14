@@ -18,9 +18,15 @@ logger = logging.getLogger("__name__")
 #     "### Instruction:\n{instruction}\n\n### Response: "
 # )
 PROMPT_TEMPLATE = (
-    "아래는 작업을 설명하는 지시문(instruction) 입니다. "
+    "아래는 태스크(task)를 설명하는 지시문(instruction)입니다."
     "요청을 적절하게 완료하는 응답을 작성하세요.\n\n"
     "### 지시문(instruction):\n{instruction}\n\n### 응답: "
+)
+
+PROMPT_TEMPLATE_INPUT = (
+    "아래는 태스크(task)를 설명하는 지시문이며, 추가 컨텍스트를 제공하는 입력(input)과 짝을 이룹니다."
+    "요청을 적절히 완료하는 응답을 작성하세요.\n\n"
+    "### 지시문(instruction):\n{instruction}\n\n입력(input):\n{input}\n\n### 응답: "
 )
 
 
@@ -35,10 +41,13 @@ def build_instruction_dataset(
         sources = []
         targets = []
         prompt = PROMPT_TEMPLATE
+        prompt_input, prompt_no_input = PROMPT_TEMPLATE_INPUT, PROMPT_TEMPLATE
         for instruction, input, output in zip(examples["instruction"], examples["input"], examples["output"]):
             if input is not None and input != "":
-                instruction = instruction + "\n" + input
-            source = prompt.format_map({"instruction": instruction})
+                source = prompt_input.format_map({"instruction": instruction, "input": input})
+            else:
+                source = prompt_no_input.format_map({"instruction": instruction})
+
             target = f"{output}{tokenizer.eos_token}"
 
             sources.append(source)
