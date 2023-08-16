@@ -3,6 +3,7 @@
 </p>
 
 ## Update Logs
+
 - 2023.06.23: [한국어 대화 평가 결과 공개](https://github.com/nlpai-lab/KULLM#evaluation)
 - 2023.06.08: [🤗Polyglot-ko 5.8B 기반 KULLM-Polyglot-5.8B-v2 fp16 모델 공개](https://huggingface.co/nlpai-lab/kullm-polyglot-5.8b-v2)
 - 2023.06.01: [구름(KULLM) 데이터셋 v2](https://huggingface.co/datasets/nlpai-lab/kullm-v2) HuggingFace Datasets 공개
@@ -32,9 +33,9 @@ KULLM(구름)은 고려대학교 [NLP & AI 연구실](http://blp.korea.ac.kr/)�
 KULLM(구름)은 Backbone Model로 [Polyglot-ko](https://github.com/EleutherAI/polyglot)을 사용하여 학습을 진행하였습니다.
 
 1. Polyglot-ko 5.8B 기반-v2 -> 🤗 [nlpai-lab/kullm-polyglot-5.8b-v2](https://huggingface.co/nlpai-lab/kullm-polyglot-5.8b-v2)
-    - 데이터셋 v2: [GPT4ALL](https://github.com/nomic-ai/gpt4all), [Dolly](https://github.com/databrickslabs/dolly), [Vicuna](https://github.com/lm-sys/FastChat)
+    - 데이터셋 v2: [GPT-4-LLM](https://github.com/Instruction-Tuning-with-GPT-4/GPT-4-LLM), [Dolly](https://github.com/databrickslabs/dolly), [Vicuna](https://github.com/lm-sys/FastChat)
 2. Polyglot-ko 12.8B 기반-v2 -> 🤗 [nlpai-lab/kullm-polyglot-12.8b-v2](https://huggingface.co/nlpai-lab/kullm-polyglot-12.8b-v2)
-    - 데이터셋 v2: [GPT4ALL](https://github.com/nomic-ai/gpt4all), [Dolly](https://github.com/databrickslabs/dolly), [Vicuna](https://github.com/lm-sys/FastChat)
+    - 데이터셋 v2: [GPT-4-LLM](https://github.com/Instruction-Tuning-with-GPT-4/GPT-4-LLM), [Dolly](https://github.com/databrickslabs/dolly), [Vicuna](https://github.com/lm-sys/FastChat)
 3. Polyglot-ko 12.8B 기반-v1 -> 🤗 [metterian/kullm-polyglot-12.8b-v1](https://huggingface.co/metterian/kullm-polyglot-12.8b-v1)
     - 데이터셋 v1: GPT4ALL
 
@@ -96,7 +97,7 @@ print(result)
 
 [HuggingFace Datasets](https://huggingface.co/datasets/nlpai-lab/kullm-v2)
 
-구름 데이터셋 v2는 [GPT4ALL](https://github.com/nomic-ai/gpt4all), [Vicuna](https://github.com/lm-sys/FastChat), 그리고 Databricks의 [Dolly](https://github.com/databrickslabs/dolly) 데이터셋을 병합한 것입니다. 이 모든 데이터셋은 DeepL을 이용하여 한국어로 번역되었습니다.
+구름 데이터셋 v2는 [GPT-4-LLM](https://github.com/Instruction-Tuning-with-GPT-4/GPT-4-LLM), [Vicuna](https://github.com/lm-sys/FastChat), 그리고 Databricks의 [Dolly](https://github.com/databrickslabs/dolly) 데이터셋을 병합한 것입니다. 이 모든 데이터셋은 DeepL을 이용하여 한국어로 번역되었습니다.
 
 GPT4ALL은 instruction tuned assistant-style language model이며, Vicuna와 Dolly 데이터셋은 다양한 자연어 처리 문제를 해결하는 데 활용됩니다. 특히, Dolly는 instruction/response fine tuning records를 훈련 데이터로 사용한 언어 모델입니다.
 
@@ -212,13 +213,14 @@ python -m torch.distributed.launch  --master_port=34322  --nproc_per_node 4 fine
 
 ## Evaluation
 
-- 대화 평가 메트릭 (Dialogue Evaluation Metric)을 사용하여 모델 간 한국어 대화를 평가 했습니다. 대화 평가 메트릭은 G-Eval: NLG Evaluation using GPT-4 with Better Human Alignment (Yang Liu. et. al. 2023)과 USR: An Unsupervised and Reference Free Evaluation Metric for Dialog Generation (Shikib Mehri. et. al. 2020)을 활용하여 평가 Prompt를 구성했습니다. 
+- 대화 평가 메트릭 (Dialogue Evaluation Metric)을 사용하여 모델 간 한국어 대화를 평가 했습니다. 대화 평가 메트릭은 G-Eval: NLG Evaluation using GPT-4 with Better Human Alignment (Yang Liu. et. al. 2023)과 USR: An Unsupervised and Reference Free Evaluation Metric for Dialog Generation (Shikib Mehri. et. al. 2020)을 활용하여 평가 Prompt를 구성했습니다.
 - 평가 모델은 GPT-4를 사용하였고, 평가 데이터셋은 [yizhongw/self-instruct](https://github.com/yizhongw/self-instruct)의 휴먼 평가 데이터셋인 `user_oriented_instructions.jsonl`을 deepl로 번역한 데이터셋을 사용하였습니다.
 - 해당 데이터셋은 [`user_oriented_instructions_eval.jsonl`](data/user_oriented_instructions_eval.jsonl)에 저장되어 있습니다.
 
-
 ![eval_result](./assets/eval.png)
-- 그래프의 값은 0-100점으로 스케일링 되었습니다. 
+
+- 그래프의 값은 0-100점으로 스케일링 되었습니다.
+
 ### LLM Inference Results for Korean Evaluation Set
 
 | Type   | Base-model     | Model                                                        | 이해 가능성 (0 - 1) | 자연스러움 (1 - 3) | 맥락 유지 (1 - 3) | 흥미롭기 (1 - 3) | 지시어 사용 (0-1) | 전반적인 품질  (1-5) |
@@ -228,8 +230,7 @@ python -m torch.distributed.launch  --master_port=34322  --nproc_per_node 4 fine
 |  |  |  |  |  |  |  |  |  |
 | Open   | Polyglot-ko-12.8b | [KoAlpaca v1.1](https://huggingface.co/beomi/KoAlpaca-Polyglot-12.8B) | 0.651             | 1.909              | 1.901             | 1.583            | 0.385             | 2.575                |
 | Open   | LLaMA-7b          | [koVicuna](https://huggingface.co/junelee/ko_vicuna_7b)      | 0.460              | 1.583              | 1.726             | 1.528            | 0.409             | 2.440                 |
-| Open   | Polyglot-ko-12.8b | [ KULLM v2](https://huggingface.co/nlpai-lab/kullm-polyglot-12.8b-v2) | **0.742**         | **2.083**          | **2.107**         | **1.794**        | **0.548**         | **3.036**            |
-
+| Open   | Polyglot-ko-12.8b | [KULLM v2](https://huggingface.co/nlpai-lab/kullm-polyglot-12.8b-v2) | **0.742**         | **2.083**          | **2.107**         | **1.794**        | **0.548**         | **3.036**            |
 
 ### Prompt
 
