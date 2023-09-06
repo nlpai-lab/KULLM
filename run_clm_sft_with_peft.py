@@ -26,57 +26,40 @@ import math
 import os
 import sys
 from dataclasses import dataclass, field
-from pathlib import Path
 from typing import Optional
-
+from pathlib import Path
 import datasets
 import torch
+from build_dataset import build_instruction_dataset, DataCollatorForSupervisedDataset
 import transformers
-from utils.build_dataset import (
-    DataCollatorForSupervisedDataset,
-    build_instruction_dataset,
-)
-from peft import (
-    LoraConfig,
-    PeftModel,
-    TaskType,
-    get_peft_model,
-    get_peft_model_state_dict,
-)
 from transformers import (
     CONFIG_MAPPING,
     AutoConfig,
     AutoModelForCausalLM,
+    GPTNeoXForCausalLM,
     AutoTokenizer,
     HfArgumentParser,
-    GPTNeoXForCausalLM,
-    GPTNeoXTokenizerFast,
     Trainer,
     TrainingArguments,
     set_seed,
+    TrainerCallback,
 )
-from transformers.trainer_utils import (
-    PREFIX_CHECKPOINT_DIR,
-    get_last_checkpoint,
-)
+from transformers.trainer_utils import get_last_checkpoint
 from transformers.utils import send_example_telemetry
 from transformers.utils.versions import require_version
+
+from peft import LoraConfig, TaskType, get_peft_model, PeftModel, get_peft_model_state_dict
+from transformers.trainer_utils import PREFIX_CHECKPOINT_DIR
 from setproctitle import setproctitle
 
-
-setproctitle("joon-sft")
+setproctitle(f"{os.getuid()}-{os.path.basename(__file__)}")
 
 IGNORE_INDEX = -100
-DEFAULT_PAD_TOKEN = "[PAD]"
-# DEFAULT_EOS_TOKEN = "</s>"
-# DEFAULT_BOS_TOKEN = "<s>"
-# DEFAULT_UNK_TOKEN = "<unk>"
 
 require_version("datasets>=1.8.0", "To fix: pip install -r examples/pytorch/language-modeling/requirements.txt")
-# pip install git+https://github.com/huggingface/peft.git@13e53fc
 
 
-class SavePeftModelCallback(transformers.TrainerCallback):
+class SavePeftModelCallback(TrainerCallback):
     def save_model(self, args, state, kwargs):
         if state.best_model_checkpoint is not None:
             checkpoint_folder = os.path.join(state.best_model_checkpoint, "sft_lora_model")
@@ -206,7 +189,7 @@ class DataTrainingArguments:
     )
     data_cache_dir: Optional[str] = field(default=None, metadata={"help": "The datasets processed stored"})
 
-    max_seq_length: Optional[int] = field(default=512)
+    max_seq_length: Optional[int] = field(default=1024)
 
 
 @dataclass
@@ -217,7 +200,7 @@ class MyTrainingArguments(TrainingArguments):
     lora_alpha: Optional[float] = field(default=32.0)
     modules_to_save: Optional[str] = field(default=None)
     peft_path: Optional[str] = field(default=None)
-    force_resize_embeddings: bool = field(default=False)
+    flash_attn: Optional[bool] = field(default=False)
 
 
 logger = logging.getLogger(__name__)
@@ -301,19 +284,14 @@ def main():
         "revision": model_args.model_revision,
         "use_auth_token": True if model_args.use_auth_token else None,
     }
-
-    tokenizer = AutoTokenizer.from_pretrained(
-        model_args.model_name_or_path, padding_side="right", **tokenizer_kwargs
-    )  # alpaca use padding_side="right"
-
-    if tokenizer.pad_token is None:
-        print(f"Adding pad token {DEFAULT_PAD_TOKEN}")
-        tokenizer.add_special_tokens(dict(pad_token=DEFAULT_PAD_TOKEN))
+    if model_args.tokenizer_name:
+        tokenizer = AutoTokenizer.from_pretrained(model_args.tokenizer_name, **tokenizer_kwargs)
 
     data_collator = DataCollatorForSupervisedDataset(tokenizer=tokenizer)
     eval_dataset = None
     train_dataset = None
 
+    sample = {}
     if training_args.do_train:
         with training_args.main_process_first(desc="loading and tokenization"):
             path = Path(data_args.dataset_dir)
@@ -327,8 +305,11 @@ def main():
                 preprocessing_num_workers=data_args.preprocessing_num_workers,
             )
         logger.info(f"Num train_samples  {len(train_dataset)}")
-        logger.info("training example:")
+        logger.info("Training example:")
         logger.info(tokenizer.decode(train_dataset[0]["input_ids"]))
+
+        sample["text"] = tokenizer.decode(train_dataset[0]["input_ids"])
+        sample["input_ids"] = train_dataset[0]["input_ids"]
 
     if training_args.do_eval:
         with training_args.main_process_first(desc="loading and tokenization"):
@@ -342,7 +323,7 @@ def main():
                 preprocessing_num_workers=data_args.preprocessing_num_workers,
             )
         logger.info(f"Num eval_samples  {len(eval_dataset)}")
-        logger.info("eval example:")
+        logger.info("Evaluation example:")
         logger.info(tokenizer.decode(eval_dataset[0]["input_ids"]))
 
     if model_args.model_name_or_path:
@@ -366,12 +347,9 @@ def main():
         n_params = sum({p.data_ptr(): p.numel() for p in model.parameters()}.values())
         logger.info(f"Training new model from scratch - Total size={n_params/2**20:.2f}M params")
 
+    model_vocab_size = model.get_input_embeddings().weight.shape[0]
+    logger.info(f"Model vocab size: {model_vocab_size}")
     logger.info(f"len(tokenizer):{len(tokenizer)}")
-    embedding_size = model.get_input_embeddings().weight.shape[0]
-
-    # if len(tokenizer) != embedding_size:
-    #     logger.info("resize the embedding size by the size of the tokenizer")
-    #     model.resize_token_embeddings(len(tokenizer))
 
     if training_args.peft_path is not None:
         logger.info("Peft from pre-trained model")
@@ -398,8 +376,8 @@ def main():
         )
         model = get_peft_model(model, peft_config)
 
-    model.config.use_cache = False  # connflict with gradient checkpointing
     # model.base_model.tie_weights()
+    model.config.use_cache = False  # for gradient checkpointing
     model.print_trainable_parameters()
     logger.info(f"model.modules_to_save: {model.modules_to_save}")
     old_state_dict = model.state_dict
@@ -412,7 +390,7 @@ def main():
         model=model,
         args=training_args,
         train_dataset=train_dataset,
-        eval_dataset=eval_dataset,
+        eval_dataset=eval_dataset.select(range(10)),
         tokenizer=tokenizer,
         data_collator=data_collator,
     )
