@@ -168,7 +168,7 @@ pip install -r requirements.txt
 
 2. 만약 bitsandbytes가 작동하지 않는다면, [소스에서 직접 설치하세요](https://github.com/TimDettmers/bitsandbytes/blob/main/compile_from_source.md). 윈도우 사용자는 [다음의 설명서](https://github.com/tloen/alpaca-lora/issues/17)를 참조하세요.
 
-### Traning (`finetune_polyglot.py`)
+### Training (`finetune_polyglot.py`)
 
 이 코드는 Polyglot 모델에 Parameter-Efficient Fine-Tuning (PEFT)을 적용하고, 프롬프트 구성 및 토크나이징에 관련된 코드가 들어있는 파일입니다.
 
