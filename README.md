@@ -1,5 +1,5 @@
 <p align="center" width="100%">
-<img src="assets/kullm_logo.png" alt="NLP Logo" style="width: 90%;">
+<img src="assets/kullm_logo.png" alt="NLP Logo" style="width: 50%;">
 </p>
 
 ## Update Logs
