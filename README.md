@@ -18,24 +18,33 @@
 
 KULLM(구름)은 고려대학교 [NLP & AI 연구실](http://blp.korea.ac.kr/)과 [HIAI 연구소](http://hiai.korea.ac.kr)가 개발한 한국어 Large Language Model (LLM) 입니다.
 
-KULLM3을 공개합니다. 이전 모델의 학습 방법 및 데이터는 kullm_v2 브랜치를 참고해 주세요.
+KULLM3을 공개합니다.  
+
+(이전 모델의 학습 방법 및 데이터는 kullm_v2 브랜치를 참고해 주세요.)
 
 <br/>
+
+## KULLM3 대화 성능 평가 결과
 
 <img src="assets/kullm3_instruction_evaluation.png" >
 
 ## 대화 예시
 
-<img src="assets/ex1.png" width="80%" >
+<img src="assets/ex1.png" alt="example 1" >
+
 ---
-**추가 예제**
-<details>
-<img src="assets/ex2.png" width="80%" >
+
+<img src="assets/ex2.png" alt="example 2">
+
 ---
-<img src="assets/ex3.png" width="80%" >
+
+<img src="assets/ex3.png" alt="example 3">
+
 ---
-<img src="assets/ex4.png" width="80%" >
-</details>
+
+<img src="assets/ex4.png" alt="example 4">
+
+---
 
 ## KULLM 모델 실행 예시 코드
 
@@ -86,14 +95,14 @@ _ = model.generate(inputs, streamer=streamer, max_new_tokens=1024)
 ```
 
 
-## Model Evaluation
+## Model Evaluation (Fully Reproducible)
 
 - 대화 능력 평가는 다음을 참고하여 진행했습니다.
   - G-Eval: NLG Evaluation using GPT-4 with Better Human Alignment (Yang Liu. et. al. 2023)
   - [MT-Eval](https://github.com/KwanWaiChung/MT-Eval?tab=readme-ov-file#gpt4_evaluation)
 - 평가 모델은 GPT-4-Turbo(gpt-4-0125-preview)를 사용하였고, 평가 데이터셋은 [yizhongw/self-instruct](https://github.com/yizhongw/self-instruct)의 휴먼 평가 데이터셋인 `user_oriented_instructions.jsonl`을 deepl로 번역한 데이터셋을 사용하였습니다.
 - 주어진 prompt 데이터에 대해 모델이 응답을 생성하고, 그 응답을 OpenAI API를 사용하여 평가하는 방식입니다.
-- 해당 평가 결과는 [repo](https://github.com/superheavytail/chatgpt-model-evaluation)에서 재현할 수 있습니다.
+- 해당 평가 결과는 [repo](https://github.com/superheavytail/lm-chat-eval-by-openai)에서 재현할 수 있습니다.
 
 
 ### Prompt
