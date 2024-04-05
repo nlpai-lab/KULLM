@@ -152,7 +152,7 @@ Evaluation Form (scores ONLY):
 - 고정된 system prompt로 훈련된 모델이므로, **system prompt를 주지 않는 벤치마크의 경우 성능이 본래보다 낮을 수 있습니다.**
 
 ## License
-- ```CC BY-NC 4.0```
+- ```Apache-2.0```
 
 ## Citation
 
