@@ -157,7 +157,16 @@ Evaluation Form (scores ONLY):
 ## Citation
 
 Please cite the repo if you use the data or code in this repo.
-
+```
+@inproceedings{lee2023kullm,
+  title={KULLM: Learning to Construct Korean Instruction-following Large Language Models},
+  author={Lee, SeungJun and Lee, Taemin and Lee, Jeongwoo and Jang, Yoona and Lim, Heuiseok},
+  booktitle={Annual Conference on Human and Language Technology},
+  pages={196--202},
+  year={2023},
+  organization={Human and Language Technology}
+}
+```
 ```
 @misc{kullm,
   author = {NLP & AI Lab and Human-Inspired AI research},
