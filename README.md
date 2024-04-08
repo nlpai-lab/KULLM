@@ -5,6 +5,7 @@
 </p>
 
 ## Update Logs
+- 2024.04.08: [🤗구름3(KULLM3) 양자화 모델(awq-4bit) 공개](https://huggingface.co/taeminlee/KULLM3-awq)
 - 2024.04.03: [🤗구름3(KULLM3) 공개](https://huggingface.co/nlpai-lab/KULLM3)
 - 2023.06.23: [한국어 대화 평가 결과 공개](https://github.com/nlpai-lab/KULLM#evaluation)
 - 2023.06.08: [🤗Polyglot-ko 5.8B 기반 KULLM-Polyglot-5.8B-v2 fp16 모델 공개](https://huggingface.co/nlpai-lab/kullm-polyglot-5.8b-v2)
