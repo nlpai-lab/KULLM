@@ -76,7 +76,7 @@ inputs = tokenizer.apply_chat_template(
     tokenize=True,
     add_generation_prompt=True,
     return_tensors='pt').to("cuda")
-_ = model.generate(inputs, streamer=streamer, max_new_tokens=1024)
+_ = model.generate(inputs, streamer=streamer, max_new_tokens=1024, use_cache=True)
 
 # 네, 고려대학교에 대해 알고 있습니다. 고려대학교는 대한민국 서울에 위치한 사립 대학교로, 1905년에 설립되었습니다. 이 대학교는 한국에서 가장 오래된 대학 중 하나로, 다양한 학부 및 대학원 프로그램을 제공합니다. 고려대학교는 특히 법학, 경제학, 정치학, 사회학, 문학, 과학 분야에서 높은 명성을 가지고 있습니다. 또한, 스포츠 분야에서도 활발한 활동을 보이며, 대한민국 대학 스포츠에서 중요한 역할을 하고 있습니다. 고려대학교는 국제적인 교류와 협력에도 적극적이며, 전 세계 다양한 대학과의 협력을 통해 글로벌 경쟁력을 강화하고 있습니다.
 ```
