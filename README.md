@@ -53,6 +53,7 @@ KULLM3을 공개합니다.
 
 - torch / transformers / accelerate 설치
 - (2024.04.03기준) transformers>=4.39.0 에서 generate 함수가 제대로 동작하지 않습니다. 4.38.2로 설치해주세요.
+- (2024.04.28기준) transformers>=4.40.0 에서 정상 동작함을 확인했습니다.
 
 ```bash
 pip install torch transformers==4.38.2 accelerate
