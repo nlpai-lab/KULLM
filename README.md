@@ -85,7 +85,7 @@ _ = model.generate(inputs, streamer=streamer, max_new_tokens=1024, use_cache=Tru
 <br/>
 
 ## Training
-- KULLM3은 [upstage/SOLAR-10.7B-Instruct-v1.0](https://huggingface.co/upstage/SOLAR-10.7B-v1.0)을 기반으로 instruction-tuning 된 모델입니다.
+- KULLM3은 [upstage/SOLAR-10.7B-v1.0](https://huggingface.co/upstage/SOLAR-10.7B-v1.0)을 기반으로 instruction-tuning 된 모델입니다.
 - 8×A100 GPU로 학습되었습니다.
 - 다음 시스템 프롬프트가 주어진 상태로 학습하였습니다. (예제 코드에서도 시스템 프롬프트를 포함시키고 있습니다!)
 ```text
