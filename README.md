@@ -160,6 +160,16 @@ Evaluation Form (scores ONLY):
 
 Please cite the repo if you use the data or code in this repo.
 ```
+@misc{kullm3,
+  author = {Kim, Jeongwook and Lee, Taemin and Jang, Yoonna and Moon, Hyeonseok and Son, Suhyune and Lee, Seungyoon and Kim, Dongjun},
+  title = {KULLM3: Korea University Large Language Model 3},
+  year = {2024},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/nlpai-lab/kullm}},
+}
+```
+```
 @inproceedings{lee2023kullm,
   title={KULLM: Learning to Construct Korean Instruction-following Large Language Models},
   author={Lee, SeungJun and Lee, Taemin and Lee, Jeongwoo and Jang, Yoona and Lim, Heuiseok},
