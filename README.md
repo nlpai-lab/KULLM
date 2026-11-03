@@ -164,7 +164,7 @@ Evaluation Form (scores ONLY):
 Please cite the repo if you use the data or code in this repo.
 ```
 @misc{kullm3,
-  author = {Kim, Jeongwook and Lee, Taemin and Jang, Yoonna and Moon, Hyeonseok and Son, Suhyune and Lee, Seungyoon and Kim, Dongjun},
+  author = {Kim, Jeongwook and Lee, Taemin and Jang, Yoonna and Moon, Hyeonseok and Son, Suhyune and Lee, Seungyoon and Kim, Dongjun and Lee, Jungseob},
   title = {KULLM3: Korea University Large Language Model 3},
   year = {2024},
   publisher = {GitHub},
