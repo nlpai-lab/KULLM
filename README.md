@@ -4,6 +4,9 @@
 <img src="assets/kullm_logo.png" alt="NLP Logo" style="width: 50%;">
 </p>
 
+## 🚀 Try KULLM3
+👉 **[KULLM3 데모 체험하기](https://demo.kullm.ai/models/kullmv3)**
+
 ## Update Logs
 - 2024.04.08: [🤗구름3(KULLM3) 양자화 모델(awq-4bit) 공개](https://huggingface.co/taeminlee/KULLM3-awq)
 - 2024.04.03: [🤗구름3(KULLM3) 공개](https://huggingface.co/nlpai-lab/KULLM3)
